@@ -4,4 +4,7 @@
    <FileRef
       location = "group:AnimeNook.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:JikanAPIService/JikanAPIService.xcodeproj">
+   </FileRef>
 </Workspace>
