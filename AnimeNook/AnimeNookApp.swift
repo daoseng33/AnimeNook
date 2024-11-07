@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import JikanAPIService
 
 @main
 struct AnimeNookApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let apiService = TopAPIService()
+            let viewModel = TopContentViewModel(apiService: apiService)
+            TopContentView(viewModel: viewModel)
         }
     }
 }
