@@ -18,13 +18,24 @@ struct TopContentView: View {
     var body: some View {
         NavigationStack {
             HStack {
-                Picker("Type", selection: $viewModel.selectedOption) {
+                Picker("Type", selection: $viewModel.selectedType) {
                     ForEach(AnimeType.allCases, id: \.self) { type in
                         Text(type.rawValue).tag(type)
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
-                Spacer()
+                Picker("Filter", selection: $viewModel.selectedFilter) {
+                    ForEach(AnimeFilter.allCases, id: \.self) { type in
+                        Text(type.rawValue).tag(type)
+                    }
+                }
+                .pickerStyle(MenuPickerStyle())
+                Picker("Rating", selection: $viewModel.selectedRating) {
+                    ForEach(AnimeRating.allCases, id: \.self) { type in
+                        Text(type.rawValue).tag(type)
+                    }
+                }
+                .pickerStyle(MenuPickerStyle())
             }
             .padding(.horizontal)
             
@@ -65,9 +76,6 @@ struct TopContentView: View {
                     }
                 }
                 .padding(.horizontal)
-                .onAppear {
-                    viewModel.fetchData()
-                }
             }
         }
     }

@@ -11,21 +11,30 @@ import JikanAPIService
 
 final class TopContentViewModel: ObservableObject {
     @Published var topAnimes: [TopAnime] = []
-    @Published var selectedOption = AnimeType.movie {
-        didSet {
-            fetchData()
-        }
-    }
+    @Published var selectedType = AnimeType.movie
+    @Published var selectedFilter: AnimeFilter = .bypopularity
+    @Published var selectedRating: AnimeRating = .g
     private var cancellables = Set<AnyCancellable>()
     private let apiService: TopAPIServiceProtocol
     
     
     init(apiService: TopAPIServiceProtocol) {
         self.apiService = apiService
+        
+        setupPublisher()
+    }
+    
+    private func setupPublisher() {
+        Publishers.CombineLatest3($selectedType, $selectedFilter, $selectedRating)
+            .debounce(for: .milliseconds(100), scheduler: RunLoop.main)
+            .sink { [weak self] (type, filter, rating) in
+                self?.fetchData()
+            }
+            .store(in: &cancellables)
     }
     
     func fetchData() {
-        apiService.fetchTopAnime(type: selectedOption, filter: .bypopularity, rating: .rx, sfw: false, page: 1, limit: 20)
+        apiService.fetchTopAnime(type: selectedType, filter: selectedFilter, rating: selectedRating, sfw: false, page: 1, limit: 20)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {

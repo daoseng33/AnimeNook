@@ -23,9 +23,9 @@ public enum AnimeType: String, CaseIterable {
 }
 
 public enum AnimeFilter: String, CaseIterable {
-    case airing
-    case upcoming
     case bypopularity
+    case upcoming
+    case airing
     case favorite
 }
 
