@@ -10,26 +10,26 @@ import Alamofire
 import Moya
 import MoyaHelper
 
-public enum AnimeType: String {
-    case tv
+public enum AnimeType: String, CaseIterable {
     case movie
     case ova
     case special
     case ona
+    case pv
+    case tv
+    case tvSpecial = "tv_special"
     case music
     case cm
-    case pv
-    case tvSpecial = "tv_special"
 }
 
-public enum AnimeFilter: String {
+public enum AnimeFilter: String, CaseIterable {
     case airing
     case upcoming
     case bypopularity
     case favorite
 }
 
-public enum AnimeRating: String {
+public enum AnimeRating: String, CaseIterable {
     case g
     case pg
     case pg13
