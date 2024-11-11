@@ -9,74 +9,69 @@ import SwiftUI
 import JikanAPIService
 
 struct TopContentView: View {
+    // MARK: - Property
     @StateObject private var viewModel: TopContentViewModel
+    private let spacing: CGFloat = 16
+    private let numberOfColumns = 2
     
+    private var itemWidth: CGFloat {
+        let screenWidth = UIScreen.main.bounds.width
+        let availableWidth = screenWidth - (spacing * 2)
+        return (availableWidth - (spacing * CGFloat(numberOfColumns - 1))) / CGFloat(numberOfColumns)
+    }
+    
+    private var columns: [GridItem] {
+        return Array(repeating: GridItem(.flexible(), spacing: spacing), count: numberOfColumns)
+    }
+    
+    // MARK: - Init
     init(viewModel: TopContentViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
+    // MARK: - View
     var body: some View {
         NavigationStack {
-            HStack {
-                Picker("Type", selection: $viewModel.selectedType) {
-                    ForEach(AnimeType.allCases, id: \.self) { type in
-                        Text(type.rawValue).tag(type)
-                    }
+            filterSection
+            animeGridSection
+        }
+        .refreshable {
+            viewModel.fetchData()
+        }
+    }
+    
+    private var filterSection: some View {
+        HStack {
+            Picker("Type", selection: $viewModel.selectedType) {
+                ForEach(AnimeType.allCases, id: \.self) { type in
+                    Text(type.rawValue).tag(type)
                 }
-                .pickerStyle(MenuPickerStyle())
-                Picker("Filter", selection: $viewModel.selectedFilter) {
-                    ForEach(AnimeFilter.allCases, id: \.self) { type in
-                        Text(type.rawValue).tag(type)
-                    }
+            }
+            .pickerStyle(MenuPickerStyle())
+            Picker("Filter", selection: $viewModel.selectedFilter) {
+                ForEach(AnimeFilter.allCases, id: \.self) { type in
+                    Text(type.rawValue).tag(type)
                 }
-                .pickerStyle(MenuPickerStyle())
-                Picker("Rating", selection: $viewModel.selectedRating) {
-                    ForEach(AnimeRating.allCases, id: \.self) { type in
-                        Text(type.rawValue).tag(type)
-                    }
+            }
+            .pickerStyle(MenuPickerStyle())
+            Picker("Rating", selection: $viewModel.selectedRating) {
+                ForEach(AnimeRating.allCases, id: \.self) { type in
+                    Text(type.rawValue).tag(type)
                 }
-                .pickerStyle(MenuPickerStyle())
+            }
+            .pickerStyle(MenuPickerStyle())
+        }
+        .padding(.horizontal)
+    }
+    
+    private var animeGridSection: some View {
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: spacing) {
+                ForEach(viewModel.topAnimes, id: \.malId) { anime in
+                    AnimeGridItem(anime: anime, itemWidth: itemWidth)
+                }
             }
             .padding(.horizontal)
-            
-            ScrollView {
-                let spacing: CGFloat = 16
-                let numberOfColumns = 2
-                
-                let screenWidth = UIScreen.main.bounds.width
-                
-                let itemWidth: CGFloat = {
-                    let availableWidth = screenWidth - (spacing * 2)
-                    return (availableWidth - (spacing * CGFloat(numberOfColumns - 1))) / CGFloat(numberOfColumns)
-                }()
-                
-                let columns: [GridItem] = {
-                    return Array(repeating: GridItem(.flexible(), spacing: spacing), count: numberOfColumns)
-                }()
-                
-                LazyVGrid(columns: columns, spacing: spacing) {
-                    ForEach(viewModel.topAnimes, id: \.malId) { anime in
-                        VStack(alignment: .leading, spacing: 8) {
-                            AsyncImage(url: URL(string: anime.imageUrl)) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                            } placeholder: {
-                                Rectangle()
-                                    .fill(Color.gray.opacity(0.2))
-                            }
-                            .frame(width: itemWidth, height: itemWidth)
-                            .clipShape(.rect(cornerRadius: 8))
-                            
-                            Text(anime.title)
-                                .font(.system(size: 14, weight: .medium))
-                                .lineLimit(2)
-                                .frame(width: itemWidth, height: 35, alignment: .topLeading)
-                        }
-                    }
-                }
-                .padding(.horizontal)
-            }
         }
     }
 }
