@@ -36,7 +36,7 @@ struct TopContentView: View {
             animeGridSection
         }
         .refreshable {
-            viewModel.fetchData()
+            viewModel.reloadData()
         }
     }
     
@@ -69,7 +69,13 @@ struct TopContentView: View {
             LazyVGrid(columns: columns, spacing: spacing) {
                 ForEach(viewModel.topAnimes, id: \.malId) { anime in
                     AnimeGridItem(anime: anime, itemWidth: itemWidth)
+                        .onAppear {
+                            viewModel.loadMoreContentIfNeeded(anime: anime)
+                        }
                 }
+            }
+            .onAppear {
+                viewModel.loadMoreContentIfNeeded()
             }
             .padding(.horizontal)
         }

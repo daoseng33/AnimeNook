@@ -10,6 +10,7 @@ import Foundation
 public struct Pagination: Decodable {
     public let lastVisiblePage: Int
     public let hasNextPage: Bool
+    public let currentPage: Int
     public let items: Items
 }
 
