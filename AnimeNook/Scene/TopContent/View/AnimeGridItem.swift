@@ -7,6 +7,7 @@
 
 import SwiftUI
 import JikanAPIService
+import Kingfisher
 
 struct AnimeGridItem: View {
     let anime: TopAnime
@@ -14,16 +15,15 @@ struct AnimeGridItem: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            AsyncImage(url: URL(string: anime.imageUrl)) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            } placeholder: {
-                Rectangle()
-                    .fill(Color.gray.opacity(0.2))
-            }
-            .frame(width: itemWidth, height: itemWidth)
-            .clipShape(.rect(cornerRadius: 8))
+            KFImage(URL(string: anime.imageUrl))
+                .placeholder {
+                    Rectangle()
+                        .fill(Color.gray.opacity(0.2))
+                }
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: itemWidth, height: itemWidth)
+                .clipShape(.rect(cornerRadius: 8))
             
             Text(anime.title)
                 .font(.system(size: 14, weight: .medium))

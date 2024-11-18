@@ -68,10 +68,13 @@ struct TopContentView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: spacing) {
                 ForEach(viewModel.topAnimes, id: \.malId) { anime in
-                    AnimeGridItem(anime: anime, itemWidth: itemWidth)
-                        .onAppear {
-                            viewModel.loadMoreContentIfNeeded(anime: anime)
-                        }
+                    let contentDetailViewModel = ContentDetailViewModel(anime: anime)
+                    NavigationLink(destination: ContentDetailView(viewModel: contentDetailViewModel)) {
+                        AnimeGridItem(anime: anime, itemWidth: itemWidth)
+                            .onAppear {
+                                viewModel.loadMoreContentIfNeeded(anime: anime)
+                            }
+                    }
                 }
             }
             .onAppear {

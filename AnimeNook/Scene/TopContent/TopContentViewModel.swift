@@ -44,7 +44,7 @@ final class TopContentViewModel: ObservableObject {
     
     func loadMoreContentIfNeeded(anime: TopAnime? = nil) {
         if let anime = anime {
-            let thresholdIndex = topAnimes.index(topAnimes.endIndex, offsetBy: -1)
+            let thresholdIndex = topAnimes.index(topAnimes.endIndex, offsetBy: -5)
             if topAnimes.firstIndex(where: { $0.malId == anime.malId }) == thresholdIndex {
                 fetchData()
             }

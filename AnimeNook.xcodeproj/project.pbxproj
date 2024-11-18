@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C7BC0C42CDA227C00041967 /* JikanAPIService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7BC0C32CDA227C00041967 /* JikanAPIService.framework */; };
 		1C7BC0C52CDA227C00041967 /* JikanAPIService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7BC0C32CDA227C00041967 /* JikanAPIService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1C7BC13E2CEAE8CD00041967 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1C7BC13D2CEAE8CD00041967 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C7BC13E2CEAE8CD00041967 /* Kingfisher in Frameworks */,
 				1C7BC0C42CDA227C00041967 /* JikanAPIService.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +133,7 @@
 			);
 			name = AnimeNook;
 			packageProductDependencies = (
+				1C7BC13D2CEAE8CD00041967 /* Kingfisher */,
 			);
 			productName = AnimeNook;
 			productReference = 1C5A54BD2CD8BC5E004AB1F0 /* AnimeNook.app */;
@@ -215,6 +218,9 @@
 			);
 			mainGroup = 1C5A54B42CD8BC5E004AB1F0;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1C7BC1032CEAE83200041967 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 1C5A54BE2CD8BC5E004AB1F0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -596,6 +602,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1C7BC1032CEAE83200041967 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1C7BC13D2CEAE8CD00041967 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C7BC1032CEAE83200041967 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1C5A54B52CD8BC5E004AB1F0 /* Project object */;
 }
