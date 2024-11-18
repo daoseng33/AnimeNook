@@ -9,5 +9,6 @@ import Foundation
 import Combine
 
 public protocol TopAPIServiceProtocol {
-    func fetchTopAnime(type: AnimeType, filter: AnimeFilter, rating: AnimeRating, sfw: Bool, page: Int, limit: Int) -> AnyPublisher<AnimeResponse, Error>
+    func fetchTopAnime(type: TopAnimeType, filter: TopAnimeFilter, rating: TopAnimeRating, sfw: Bool, page: Int, limit: Int) -> AnyPublisher<TopAnimeResponse, Error>
+    func fetchTopManga(type: TopMangaType, filter: TopMangaFilter, page: Int, limit: Int) -> AnyPublisher<TopMangaResponse, Error>
 }

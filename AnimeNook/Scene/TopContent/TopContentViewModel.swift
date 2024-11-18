@@ -11,9 +11,9 @@ import JikanAPIService
 
 final class TopContentViewModel: ObservableObject {
     @Published var topAnimes: [TopAnime] = []
-    @Published var selectedType = AnimeType.movie
-    @Published var selectedFilter: AnimeFilter = .bypopularity
-    @Published var selectedRating: AnimeRating = .g
+    @Published var selectedType = TopAnimeType.movie
+    @Published var selectedFilter: TopAnimeFilter = .byPopularity
+    @Published var selectedRating: TopAnimeRating = .g
     @Published var loadingState: LoadingState = .initial
     private var currentPage: Int = 1
     private var cancellables = Set<AnyCancellable>()
@@ -76,7 +76,7 @@ final class TopContentViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    private func handleResponse(_ response: AnimeResponse) {
+    private func handleResponse(_ response: TopAnimeResponse) {
         if response.pagination.currentPage == 1 {
             topAnimes = response.data
         } else {

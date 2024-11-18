@@ -1,5 +1,5 @@
 //
-//  AnimeGridItem.swift
+//  TopGridItem.swift
 //  AnimeNook
 //
 //  Created by DAO on 2024/11/11.
@@ -9,13 +9,14 @@ import SwiftUI
 import JikanAPIService
 import Kingfisher
 
-struct AnimeGridItem: View {
-    let anime: TopAnime
+struct TopGridItem: View {
+    let imageUrl: URL?
+    let title: String
     let itemWidth: CGFloat
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            KFImage(URL(string: anime.imageUrl))
+            KFImage(imageUrl)
                 .placeholder {
                     Rectangle()
                         .fill(Color.gray.opacity(0.2))
@@ -25,7 +26,7 @@ struct AnimeGridItem: View {
                 .frame(width: itemWidth, height: itemWidth)
                 .clipShape(.rect(cornerRadius: 8))
             
-            Text(anime.title)
+            Text(title)
                 .font(.system(size: 14, weight: .medium))
                 .lineLimit(2)
                 .frame(width: itemWidth, height: 35, alignment: .topLeading)
