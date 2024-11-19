@@ -14,6 +14,7 @@ struct TopContentView: View {
     @State private var selectedSegment: NavigationSegment = .anime
     private let spacing: CGFloat = 16
     private let numberOfColumns = 2
+    private let scaleEffect: CGFloat = 0.85
     
     private var itemWidth: CGFloat {
         let screenWidth = UIScreen.main.bounds.width
@@ -76,8 +77,6 @@ struct TopContentView: View {
     // MARK: - Anime
     private var animeFilterSection: some View {
         HStack {
-            let scaleEffect: CGFloat = 0.85
-            
             Picker("Type", selection: $viewModel.animeSelectedType) {
                 ForEach(TopAnimeType.allCases, id: \.self) { type in
                     Text(type.displayText)
@@ -137,6 +136,7 @@ struct TopContentView: View {
                 }
             }
             .pickerStyle(.menu)
+            .scaleEffect(scaleEffect)
             
             Picker("Filter", selection: $viewModel.mangaSelectedFilter) {
                 ForEach(TopMangaFilter.allCases, id: \.self) { type in
@@ -145,6 +145,7 @@ struct TopContentView: View {
                 }
             }
             .pickerStyle(.menu)
+            .scaleEffect(scaleEffect)
         }
     }
     
