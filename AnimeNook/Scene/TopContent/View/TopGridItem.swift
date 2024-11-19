@@ -28,6 +28,7 @@ struct TopGridItem: View {
             
             Text(title)
                 .font(.system(size: 14, weight: .medium))
+                .foregroundStyle(.foreground)
                 .lineLimit(2)
                 .frame(width: itemWidth, height: 35, alignment: .topLeading)
         }

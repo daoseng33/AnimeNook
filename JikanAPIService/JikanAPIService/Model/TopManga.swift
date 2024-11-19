@@ -39,21 +39,6 @@ public struct TopManga: Decodable, Identifiable {
     public let demographics: [Author]
     
     public var id: Int { malId }
-    
-    public enum CodingKeys: String, CodingKey {
-        case malId = "mal_id"
-        case url, images, approved, titles, title
-        case titleEnglish = "title_english"
-        case titleJapanese = "title_japanese"
-        case type, chapters, volumes, status, publishing, published
-        case score
-        case scoredBy = "scored_by"
-        case rank, popularity, members, favorites
-        case synopsis, background
-        case authors, serializations, genres
-        case explicitGenres = "explicit_genres"
-        case themes, demographics
-    }
 }
 
 // MARK: - Author
@@ -62,11 +47,6 @@ public struct Author: Decodable {
     public let type: String
     public let name: String
     public let url: String
-
-    public enum CodingKeys: String, CodingKey {
-        case malId = "mal_id"
-        case type, name, url
-    }
 }
 
 // MARK: - Images
@@ -80,16 +60,11 @@ public struct ImageUrls: Decodable {
     public let imageUrl: String
     public let smallImageUrl: String
     public let largeImageUrl: String
-
-    public enum CodingKeys: String, CodingKey {
-        case imageUrl = "image_url"
-        case smallImageUrl = "small_image_url"
-        case largeImageUrl = "large_image_url"
-    }
 }
 
 // MARK: - Published
 public struct PublishedDate: Decodable {
+    public let string: String?
     public let from: String?
     public let to: String?
     public let prop: Prop
@@ -99,18 +74,17 @@ public struct PublishedDate: Decodable {
 public struct Prop: Decodable {
     public let from: DateProp
     public let to: DateProp
-    public let string: String
 }
 
 // MARK: - DateProp
-public struct DateProp: Codable {
+public struct DateProp: Decodable {
     public let day: Int?
     public let month: Int?
     public let year: Int?
 }
 
 // MARK: - Title
-public struct Title: Codable {
+public struct Title: Decodable {
     public let type: String
     public let title: String
 }

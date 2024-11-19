@@ -1,5 +1,5 @@
 //
-//  ContentDetailViewModel.swift
+//  AnimeDetailViewModel.swift
 //  AnimeNook
 //
 //  Created by DAO on 2024/11/13.
@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import JikanAPIService
 
-final class ContentDetailViewModel: ObservableObject {
+final class AnimeDetailViewModel: ObservableObject {
     let title: String
     let summary: String
     let imageUrl: URL?

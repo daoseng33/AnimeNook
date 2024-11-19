@@ -11,11 +11,16 @@ import JikanAPIService
 
 final class TopContentViewModel: ObservableObject {
     @Published var topAnimes: [TopAnime] = []
-    @Published var selectedType = TopAnimeType.movie
-    @Published var selectedFilter: TopAnimeFilter = .byPopularity
-    @Published var selectedRating: TopAnimeRating = .g
-    @Published var loadingState: LoadingState = .initial
-    private var currentPage: Int = 1
+    @Published var animeSelectedType = TopAnimeType.movie
+    @Published var animeSelectedFilter: TopAnimeFilter = .byPopularity
+    @Published var animeSelectedRating: TopAnimeRating = .g
+    @Published var animeLoadingState: LoadingState = .initial
+    @Published var topMangas: [TopManga] = []
+    @Published var mangaSelectedType = TopMangaType.manga
+    @Published var mangaSelectedFilter: TopMangaFilter = .byPopularity
+    @Published var mangaLoadingState: LoadingState = .initial
+    private var animeCurrentPage: Int = 1
+    private var mangaCurrentPage: Int = 1
     private var cancellables = Set<AnyCancellable>()
     private let apiService: TopAPIServiceProtocol
     
@@ -26,57 +31,67 @@ final class TopContentViewModel: ObservableObject {
     }
     
     private func setupPublisher() {
-        Publishers.CombineLatest3($selectedType, $selectedFilter, $selectedRating)
+        Publishers.CombineLatest3($animeSelectedType, $animeSelectedFilter, $animeSelectedRating)
             .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
             .dropFirst()
             .sink { [weak self] (type, filter, rating) in
                 guard let self else { return }
-                reloadData()
+                reloadAnimeData()
+            }
+            .store(in: &cancellables)
+        
+        Publishers.CombineLatest($mangaSelectedType, $mangaSelectedFilter)
+            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
+            .dropFirst()
+            .sink { [weak self] (type, filter) in
+                guard let self else { return }
+                reloadMangaData()
             }
             .store(in: &cancellables)
     }
     
-    func reloadData() {
-        loadingState = .initial
-        currentPage = 1
-        fetchData()
+    // MARK: - Top Anime
+    func reloadAnimeData() {
+        animeLoadingState = .initial
+        animeCurrentPage = 1
+        fetchTopAnimeData()
     }
     
-    func loadMoreContentIfNeeded(anime: TopAnime? = nil) {
+    func loadMoreAnimeIfNeeded(anime: TopAnime? = nil) {
         if let anime = anime {
             let thresholdIndex = topAnimes.index(topAnimes.endIndex, offsetBy: -5)
             if topAnimes.firstIndex(where: { $0.malId == anime.malId }) == thresholdIndex {
-                fetchData()
+                fetchTopAnimeData()
             }
         } else {
-            fetchData()
+            fetchTopAnimeData()
         }
     }
     
-    private func fetchData() {
-        guard loadingState != .loadEnd, loadingState != .loading else { return }
+    private func fetchTopAnimeData() {
+        guard animeLoadingState != .loadEnd, animeLoadingState != .loading else { return }
         
-        loadingState = .loading
+        animeLoadingState = .loading
         
-        apiService.fetchTopAnime(type: selectedType, filter: selectedFilter, rating: selectedRating, sfw: false, page: currentPage, limit: 20)
+        apiService.fetchTopAnime(type: animeSelectedType, filter: animeSelectedFilter, rating: animeSelectedRating, sfw: false, page: animeCurrentPage, limit: 20)
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] completion in
+            .sink(receiveCompletion: { [weak self] completion in
                 guard let self else { return }
                 switch completion {
                 case .finished:
-                    loadingState = .success
+                    animeLoadingState = .success
                 case .failure(let error):
-                    loadingState = .failure(error)
+                    animeLoadingState = .failure(error)
                     print("Request failed with error: \(error)")
                 }
-            } receiveValue: { [weak self] response in
+            }, receiveValue: { [weak self] response in
                 guard let self else { return }
-                handleResponse(response)
-            }
+                handleTopAnimeResponse(response)
+            })
             .store(in: &cancellables)
     }
     
-    private func handleResponse(_ response: TopAnimeResponse) {
+    private func handleTopAnimeResponse(_ response: TopAnimeResponse) {
         if response.pagination.currentPage == 1 {
             topAnimes = response.data
         } else {
@@ -84,9 +99,66 @@ final class TopContentViewModel: ObservableObject {
         }
         
         if response.pagination.hasNextPage {
-            currentPage += 1
+            animeCurrentPage += 1
         } else {
-            loadingState = .loadEnd
+            animeLoadingState = .loadEnd
+        }
+    }
+    
+    // MARK: - Top Manga
+    func reloadMangaData() {
+        mangaLoadingState = .initial
+        mangaCurrentPage = 1
+        fetchTopMangaData()
+    }
+    
+    func loadMoreMangaIfNeeded(manga: TopManga? = nil) {
+        if let manga = manga {
+            let thresholdIndex = topMangas.index(topMangas.endIndex, offsetBy: -5)
+            if topMangas.firstIndex(where: { $0.malId == manga.malId }) == thresholdIndex {
+                fetchTopMangaData()
+            }
+        } else {
+            fetchTopMangaData()
+        }
+    }
+    
+    func fetchTopMangaData() {
+        guard mangaLoadingState != .loadEnd, mangaLoadingState != .loading else { return }
+        
+        mangaLoadingState = .loading
+        
+        apiService.fetchTopManga(type: mangaSelectedType, filter: mangaSelectedFilter, page: mangaCurrentPage, limit: 20)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let self else { return }
+                switch completion {
+                case .finished:
+                    mangaLoadingState = .success
+                    
+                case .failure(let error):
+                    mangaLoadingState = .failure(error)
+                    print("Request failed with error: \(error)")
+                }
+            }, receiveValue: { [weak self] response in
+                guard let self else { return }
+                
+                handleTopMangaResponse(response)
+            })
+            .store(in: &cancellables)
+    }
+    
+    private func handleTopMangaResponse(_ response: TopMangaResponse) {
+        if response.pagination.currentPage == 1 {
+            topMangas = response.data
+        } else {
+            topMangas.append(contentsOf: response.data)
+        }
+        
+        if response.pagination.hasNextPage {
+            mangaCurrentPage += 1
+        } else {
+            mangaLoadingState = .loadEnd
         }
     }
 }

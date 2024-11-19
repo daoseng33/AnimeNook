@@ -1,5 +1,5 @@
 //
-//  ContentDetailView.swift
+//  AnimeDetailView.swift
 //  AnimeNook
 //
 //  Created by DAO on 2024/11/13.
@@ -9,11 +9,11 @@ import SwiftUI
 import JikanAPIService
 import Kingfisher
 
-struct ContentDetailView: View {
-    @StateObject private var viewModel: ContentDetailViewModel
+struct AnimeDetailView: View {
+    @StateObject private var viewModel: AnimeDetailViewModel
     @State private var isImageViewerPresented = false
     
-    init(viewModel: ContentDetailViewModel) {
+    init(viewModel: AnimeDetailViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
@@ -50,6 +50,6 @@ struct ContentDetailView: View {
 }
 
 #Preview {
-//    let viewModel = ContentDetailViewModel(anime: TopAnime(from: <#any Decoder#>))
-//    ContentDetailView(viewModel: viewModel)
+//    let viewModel = AnimeDetailViewModel(anime: TopAnime(from: <#any Decoder#>))
+//    AnimeDetailView(viewModel: viewModel)
 }

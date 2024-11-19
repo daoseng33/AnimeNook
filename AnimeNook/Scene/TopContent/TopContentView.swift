@@ -47,13 +47,20 @@ struct TopContentView: View {
                     animeGridSection
                     
                 case .manga:
-                    Rectangle()
+                    mangaFilterSection
+                    mangaGridSection
                 }
             }
             .padding(.horizontal)
         }
         .refreshable {
-            viewModel.reloadData()
+            switch selectedSegment {
+            case .anime:
+                viewModel.reloadAnimeData()
+                
+            case .manga:
+                viewModel.reloadMangaData()
+            }
         }
     }
     
@@ -66,11 +73,12 @@ struct TopContentView: View {
         .pickerStyle(.segmented)
     }
     
+    // MARK: - Anime
     private var animeFilterSection: some View {
         HStack {
             let scaleEffect: CGFloat = 0.85
             
-            Picker("Type", selection: $viewModel.selectedType) {
+            Picker("Type", selection: $viewModel.animeSelectedType) {
                 ForEach(TopAnimeType.allCases, id: \.self) { type in
                     Text(type.displayText)
                         .tag(type)
@@ -79,7 +87,7 @@ struct TopContentView: View {
             .pickerStyle(.menu)
             .scaleEffect(scaleEffect)
             
-            Picker("Filter", selection: $viewModel.selectedFilter) {
+            Picker("Filter", selection: $viewModel.animeSelectedFilter) {
                 ForEach(TopAnimeFilter.allCases, id: \.self) { type in
                     Text(type.displayText)
                         .tag(type)
@@ -88,7 +96,7 @@ struct TopContentView: View {
             .pickerStyle(.menu)
             .scaleEffect(scaleEffect)
             
-            Picker("Rating", selection: $viewModel.selectedRating) {
+            Picker("Rating", selection: $viewModel.animeSelectedRating) {
                 ForEach(TopAnimeRating.allCases, id: \.self) { type in
                     Text(type.displayText)
                         .tag(type)
@@ -103,17 +111,57 @@ struct TopContentView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: spacing) {
                 ForEach(viewModel.topAnimes, id: \.malId) { anime in
-                    let contentDetailViewModel = ContentDetailViewModel(anime: anime)
-                    NavigationLink(destination: ContentDetailView(viewModel: contentDetailViewModel)) {
+                    let contentDetailViewModel = AnimeDetailViewModel(anime: anime)
+                    NavigationLink(destination: AnimeDetailView(viewModel: contentDetailViewModel)) {
                         TopGridItem(imageUrl: URL(string: anime.imageUrl), title: anime.title, itemWidth: itemWidth)
                             .onAppear {
-                                viewModel.loadMoreContentIfNeeded(anime: anime)
+                                viewModel.loadMoreAnimeIfNeeded(anime: anime)
                             }
                     }
                 }
             }
             .onAppear {
-                viewModel.loadMoreContentIfNeeded()
+                viewModel.loadMoreAnimeIfNeeded()
+            }
+        }
+        .scrollIndicators(.hidden)
+    }
+    
+    // MARK: - Manga
+    private var mangaFilterSection: some View {
+        HStack {
+            Picker("Type", selection: $viewModel.mangaSelectedType) {
+                ForEach(TopMangaType.allCases, id: \.self) { type in
+                    Text(type.displayText)
+                        .tag(type)
+                }
+            }
+            .pickerStyle(.menu)
+            
+            Picker("Filter", selection: $viewModel.mangaSelectedFilter) {
+                ForEach(TopMangaFilter.allCases, id: \.self) { type in
+                    Text(type.displayText)
+                        .tag(type)
+                }
+            }
+            .pickerStyle(.menu)
+        }
+    }
+    
+    private var mangaGridSection: some View {
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: spacing) {
+                ForEach(viewModel.topMangas, id: \.malId) { manga in
+                    NavigationLink(destination: MangaDetailView()) {
+                        TopGridItem(imageUrl: URL(string: manga.images.jpg.imageUrl), title: manga.title, itemWidth: itemWidth)
+                            .onAppear {
+                                viewModel.loadMoreMangaIfNeeded(manga: manga)
+                            }
+                    }
+                }
+            }
+            .onAppear {
+                viewModel.loadMoreMangaIfNeeded()
             }
         }
         .scrollIndicators(.hidden)
