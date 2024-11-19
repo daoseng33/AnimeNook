@@ -12,7 +12,7 @@ import SwiftUI
 
 final class TopContentViewModel: ObservableObject {
     @Published var topAnimes: [TopAnime] = []
-    @Published var animeSelectedType = TopAnimeType.movie
+    @Published var animeSelectedType = TopAnimeType.tv
     @Published var animeSelectedFilter: TopAnimeFilter = .byPopularity
     @Published var animeSelectedRating: TopAnimeRating = .g
     @Published var animeLoadingState: LoadingState = .initial

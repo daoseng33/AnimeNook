@@ -11,13 +11,13 @@ import Moya
 import MoyaHelper
 
 public enum TopAnimeType: String, CaseIterable, Identifiable {
+    case tv
+    case tvSpecial = "tv_special"
     case movie
     case ova
     case special
     case ona
     case pv
-    case tv
-    case tvSpecial = "tv_special"
     case music
     case cm
     
@@ -25,6 +25,10 @@ public enum TopAnimeType: String, CaseIterable, Identifiable {
     
     public var displayText: String {
         switch self {
+        case .tv:
+            return "TV"
+        case .tvSpecial:
+            return "TV Special"
         case .movie:
             return "Movie"
         case .ova:
@@ -35,10 +39,6 @@ public enum TopAnimeType: String, CaseIterable, Identifiable {
             return "ONA"
         case .pv:
             return "PV"
-        case .tv:
-            return "TV"
-        case .tvSpecial:
-            return "TV Special"
         case .music:
             return "Music"
         case .cm:
