@@ -6,13 +6,12 @@
 //
 
 import Foundation
-import Combine
 import JikanAPIService
 
-final class AnimeDetailViewModel: ObservableObject {
+final class AnimeDetailViewModel {
     let title: String
     let summary: String
-    let imageUrl: URL?
+    let imageURL: URL?
     let rating: String
     let type: String
     let source: String
@@ -20,7 +19,7 @@ final class AnimeDetailViewModel: ObservableObject {
     init(anime: TopAnime) {
         title = anime.title
         summary = anime.synopsis
-        imageUrl = URL(string: anime.largeImageUrl)
+        imageURL = URL(string: anime.largeImageUrl)
         rating = "Rating: \(anime.rating)"
         type = "Type: \(anime.type)"
         source = "Source: \(anime.source)"

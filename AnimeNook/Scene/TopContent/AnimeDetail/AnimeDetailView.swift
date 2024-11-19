@@ -6,21 +6,20 @@
 //
 
 import SwiftUI
-import JikanAPIService
 import Kingfisher
 
 struct AnimeDetailView: View {
-    @StateObject private var viewModel: AnimeDetailViewModel
+    private var viewModel: AnimeDetailViewModel
     @State private var isImageViewerPresented = false
     
     init(viewModel: AnimeDetailViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+        self.viewModel = viewModel
     }
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                KFImage(viewModel.imageUrl)
+                KFImage(viewModel.imageURL)
                     .placeholder {
                         ProgressView()
                     }
@@ -44,7 +43,7 @@ struct AnimeDetailView: View {
         .navigationBarTitleDisplayMode(.large)
         .toolbarRole(.editor)
         .fullScreenCover(isPresented: $isImageViewerPresented) {
-            ImageViewer(imageUrl: viewModel.imageUrl, isPresented: $isImageViewerPresented)
+            ImageViewer(imageUrl: viewModel.imageURL, isPresented: $isImageViewerPresented)
         }
     }
 }

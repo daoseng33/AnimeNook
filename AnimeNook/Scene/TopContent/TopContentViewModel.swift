@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import JikanAPIService
+import SwiftUI
 
 final class TopContentViewModel: ObservableObject {
     @Published var topAnimes: [TopAnime] = []

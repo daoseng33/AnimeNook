@@ -29,7 +29,7 @@ public struct TopManga: Decodable, Identifiable {
     public let popularity: Int
     public let members: Int
     public let favorites: Int
-    public let synopsis: String?
+    public let synopsis: String
     public let background: String?
     public let authors: [Author]
     public let serializations: [Author]
