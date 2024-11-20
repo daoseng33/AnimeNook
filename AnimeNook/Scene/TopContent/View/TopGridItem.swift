@@ -15,7 +15,7 @@ struct TopGridItem: View {
     let itemWidth: CGFloat
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: Constant.UI.spacing2) {
             KFImage(imageUrl)
                 .placeholder {
                     Rectangle()

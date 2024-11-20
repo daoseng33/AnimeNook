@@ -12,7 +12,7 @@ struct TopContentView: View {
     // MARK: - Property
     @StateObject private var viewModel: TopContentViewModel
     @State private var selectedSegment: NavigationSegment = .anime
-    private let spacing: CGFloat = 16
+    private let spacing: CGFloat = Constant.UI.spacing4
     private let numberOfColumns = 2
     private let scaleEffect: CGFloat = 0.85
     

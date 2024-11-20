@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SFSafeSymbols
 
 struct ImageViewer: View {
     let imageUrl: URL?
@@ -97,7 +98,8 @@ struct ImageViewer: View {
                     Button {
                         isPresented = false
                     } label: {
-                        Image(systemName: "xmark")
+                        Image(systemSymbol: .xmark)
+                            .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(.white)
                     }
                 }

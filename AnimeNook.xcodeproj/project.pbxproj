@@ -10,6 +10,7 @@
 		1C7BC0C42CDA227C00041967 /* JikanAPIService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7BC0C32CDA227C00041967 /* JikanAPIService.framework */; };
 		1C7BC0C52CDA227C00041967 /* JikanAPIService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7BC0C32CDA227C00041967 /* JikanAPIService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1C7BC13E2CEAE8CD00041967 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1C7BC13D2CEAE8CD00041967 /* Kingfisher */; };
+		1C7BC2252CEDBD9700041967 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 1C7BC2242CEDBD9700041967 /* SFSafeSymbols */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C7BC2252CEDBD9700041967 /* SFSafeSymbols in Frameworks */,
 				1C7BC13E2CEAE8CD00041967 /* Kingfisher in Frameworks */,
 				1C7BC0C42CDA227C00041967 /* JikanAPIService.framework in Frameworks */,
 			);
@@ -134,6 +136,7 @@
 			name = AnimeNook;
 			packageProductDependencies = (
 				1C7BC13D2CEAE8CD00041967 /* Kingfisher */,
+				1C7BC2242CEDBD9700041967 /* SFSafeSymbols */,
 			);
 			productName = AnimeNook;
 			productReference = 1C5A54BD2CD8BC5E004AB1F0 /* AnimeNook.app */;
@@ -220,6 +223,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				1C7BC1032CEAE83200041967 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				1C7BC2232CEDBD9700041967 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 			);
 			productRefGroup = 1C5A54BE2CD8BC5E004AB1F0 /* Products */;
 			projectDirPath = "";
@@ -612,6 +616,14 @@
 				minimumVersion = 8.1.0;
 			};
 		};
+		1C7BC2232CEDBD9700041967 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SFSafeSymbols/SFSafeSymbols";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -619,6 +631,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1C7BC1032CEAE83200041967 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		1C7BC2242CEDBD9700041967 /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C7BC2232CEDBD9700041967 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

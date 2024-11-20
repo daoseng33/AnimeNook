@@ -29,14 +29,14 @@ struct AnimeDetailView: View {
                         isImageViewerPresented = true
                     }
                 
-                VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading, spacing: Constant.UI.spacing2) {
                     Text(viewModel.type)
                     Text(viewModel.source)
                     Text(viewModel.rating)
                 }
-                .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
+                .padding(EdgeInsets(top: 0, leading: Constant.UI.spacing2, bottom: 0, trailing: Constant.UI.spacing2))
                 Text(viewModel.summary)
-                    .padding(8)
+                    .padding(Constant.UI.spacing2)
             }
         }
         .navigationTitle(viewModel.title)

@@ -19,6 +19,6 @@ final class MangaDetailViewModel {
         imageURL = URL(string: manga.images.jpg.largeImageUrl)
         summary = manga.synopsis
         type = "Type: \(manga.type)"
-        score = "Score: \(manga.score) / 10"
+        score = "\(manga.score)"
     }
 }
