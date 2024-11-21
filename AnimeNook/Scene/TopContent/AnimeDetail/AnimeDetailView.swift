@@ -30,6 +30,8 @@ struct AnimeDetailView: View {
                     }
                 
                 VStack(alignment: .leading, spacing: Constant.UI.spacing2) {
+                    Text(viewModel.title)
+                        .font(.headline)
                     Text(viewModel.type)
                     Text(viewModel.source)
                     Text(viewModel.rating)
@@ -38,9 +40,10 @@ struct AnimeDetailView: View {
                 Text(viewModel.summary)
                     .padding(Constant.UI.spacing2)
             }
+            .textSelection(.enabled)
         }
         .navigationTitle(viewModel.title)
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbarRole(.editor)
         .fullScreenCover(isPresented: $isImageViewerPresented) {
             ImageViewer(imageUrl: viewModel.imageURL, isPresented: $isImageViewerPresented)

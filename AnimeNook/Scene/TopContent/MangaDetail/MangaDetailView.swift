@@ -30,6 +30,8 @@ struct MangaDetailView: View {
                         isImageViewerPresented = true
                     }
                 VStack(alignment: .leading, spacing: Constant.UI.spacing2) {
+                    Text(viewModel.title)
+                        .font(.headline)
                     Text(viewModel.type)
                     HStack(spacing: Constant.UI.spacing1) {
                         Image(systemSymbol: .starFill)
@@ -42,9 +44,10 @@ struct MangaDetailView: View {
                 Text(viewModel.summary)
                     .padding(Constant.UI.spacing2)
             }
+            .textSelection(.enabled)
         }
         .navigationTitle(viewModel.title)
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbarRole(.editor)
         .fullScreenCover(isPresented: $isImageViewerPresented) {
             ImageViewer(imageUrl: viewModel.imageURL, isPresented: $isImageViewerPresented)
