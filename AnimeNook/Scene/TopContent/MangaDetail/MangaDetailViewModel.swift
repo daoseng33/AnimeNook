@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import JikanAPIService
+import AnimeData
 
 final class MangaDetailViewModel {
     let title: String

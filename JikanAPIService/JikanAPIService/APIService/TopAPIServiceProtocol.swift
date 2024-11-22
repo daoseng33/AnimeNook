@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import AnimeData
 
 public protocol TopAPIServiceProtocol {
     func fetchTopAnime(type: TopAnimeType, filter: TopAnimeFilter, rating: TopAnimeRating, sfw: Bool, page: Int, limit: Int) -> AnyPublisher<TopAnimeResponse, Error>

@@ -7,116 +7,83 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C0735982CF0701700E1392D /* AnimeData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0735972CF0701700E1392D /* AnimeData.framework */; };
-		1C0735992CF0701700E1392D /* AnimeData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0735972CF0701700E1392D /* AnimeData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1C7BC0882CD9BCA700041967 /* JikanAPIService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7BC07D2CD9BCA700041967 /* JikanAPIService.framework */; };
-		1C7BC09A2CD9BE7300041967 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 1C7BC0992CD9BE7300041967 /* CombineMoya */; };
-		1C7BC09C2CD9BE7300041967 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 1C7BC09B2CD9BE7300041967 /* Moya */; };
-		1C7BC0AF2CD9E33400041967 /* MoyaHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 1C7BC0AE2CD9E33400041967 /* MoyaHelper */; };
+		1C0735722CF06F7D00E1392D /* AnimeData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0735672CF06F7D00E1392D /* AnimeData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1C7BC0892CD9BCA700041967 /* PBXContainerItemProxy */ = {
+		1C0735732CF06F7D00E1392D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1C7BC0742CD9BCA700041967 /* Project object */;
+			containerPortal = 1C07355E2CF06F7D00E1392D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1C7BC07C2CD9BCA700041967;
-			remoteInfo = JikanAPIService;
+			remoteGlobalIDString = 1C0735662CF06F7D00E1392D;
+			remoteInfo = AnimeData;
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		1C07359A2CF0701700E1392D /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				1C0735992CF0701700E1392D /* AnimeData.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		1C0735972CF0701700E1392D /* AnimeData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AnimeData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1C7BC07D2CD9BCA700041967 /* JikanAPIService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JikanAPIService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1C7BC0872CD9BCA700041967 /* JikanAPIServiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JikanAPIServiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C0735672CF06F7D00E1392D /* AnimeData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnimeData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C0735712CF06F7D00E1392D /* AnimeDataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimeDataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		1C7BC08F2CD9BCA700041967 /* Exceptions for "JikanAPIService" folder in "JikanAPIService" target */ = {
+		1C0735792CF06F7D00E1392D /* Exceptions for "AnimeData" folder in "AnimeData" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			publicHeaders = (
-				JikanAPIService.h,
+				AnimeData.h,
 			);
-			target = 1C7BC07C2CD9BCA700041967 /* JikanAPIService */;
+			target = 1C0735662CF06F7D00E1392D /* AnimeData */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		1C7BC07F2CD9BCA700041967 /* JikanAPIService */ = {
+		1C0735692CF06F7D00E1392D /* AnimeData */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				1C7BC08F2CD9BCA700041967 /* Exceptions for "JikanAPIService" folder in "JikanAPIService" target */,
+				1C0735792CF06F7D00E1392D /* Exceptions for "AnimeData" folder in "AnimeData" target */,
 			);
-			path = JikanAPIService;
+			path = AnimeData;
 			sourceTree = "<group>";
 		};
-		1C7BC08B2CD9BCA700041967 /* JikanAPIServiceTests */ = {
+		1C0735752CF06F7D00E1392D /* AnimeDataTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = JikanAPIServiceTests;
+			path = AnimeDataTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1C7BC07A2CD9BCA700041967 /* Frameworks */ = {
+		1C0735642CF06F7D00E1392D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C7BC0AF2CD9E33400041967 /* MoyaHelper in Frameworks */,
-				1C7BC09C2CD9BE7300041967 /* Moya in Frameworks */,
-				1C7BC09A2CD9BE7300041967 /* CombineMoya in Frameworks */,
-				1C0735982CF0701700E1392D /* AnimeData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1C7BC0842CD9BCA700041967 /* Frameworks */ = {
+		1C07356E2CF06F7D00E1392D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C7BC0882CD9BCA700041967 /* JikanAPIService.framework in Frameworks */,
+				1C0735722CF06F7D00E1392D /* AnimeData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1C0735962CF0701700E1392D /* Frameworks */ = {
+		1C07355D2CF06F7D00E1392D = {
 			isa = PBXGroup;
 			children = (
-				1C0735972CF0701700E1392D /* AnimeData.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		1C7BC0732CD9BCA700041967 = {
-			isa = PBXGroup;
-			children = (
-				1C7BC07F2CD9BCA700041967 /* JikanAPIService */,
-				1C7BC08B2CD9BCA700041967 /* JikanAPIServiceTests */,
-				1C0735962CF0701700E1392D /* Frameworks */,
-				1C7BC07E2CD9BCA700041967 /* Products */,
+				1C0735692CF06F7D00E1392D /* AnimeData */,
+				1C0735752CF06F7D00E1392D /* AnimeDataTests */,
+				1C0735682CF06F7D00E1392D /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		1C7BC07E2CD9BCA700041967 /* Products */ = {
+		1C0735682CF06F7D00E1392D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1C7BC07D2CD9BCA700041967 /* JikanAPIService.framework */,
-				1C7BC0872CD9BCA700041967 /* JikanAPIServiceTests.xctest */,
+				1C0735672CF06F7D00E1392D /* AnimeData.framework */,
+				1C0735712CF06F7D00E1392D /* AnimeDataTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,7 +91,7 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1C7BC0782CD9BCA700041967 /* Headers */ = {
+		1C0735622CF06F7D00E1392D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -134,107 +101,99 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1C7BC07C2CD9BCA700041967 /* JikanAPIService */ = {
+		1C0735662CF06F7D00E1392D /* AnimeData */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1C7BC0902CD9BCA700041967 /* Build configuration list for PBXNativeTarget "JikanAPIService" */;
+			buildConfigurationList = 1C07357A2CF06F7D00E1392D /* Build configuration list for PBXNativeTarget "AnimeData" */;
 			buildPhases = (
-				1C7BC0782CD9BCA700041967 /* Headers */,
-				1C7BC0792CD9BCA700041967 /* Sources */,
-				1C7BC07A2CD9BCA700041967 /* Frameworks */,
-				1C7BC07B2CD9BCA700041967 /* Resources */,
-				1C07359A2CF0701700E1392D /* Embed Frameworks */,
+				1C0735622CF06F7D00E1392D /* Headers */,
+				1C0735632CF06F7D00E1392D /* Sources */,
+				1C0735642CF06F7D00E1392D /* Frameworks */,
+				1C0735652CF06F7D00E1392D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				1C7BC07F2CD9BCA700041967 /* JikanAPIService */,
+				1C0735692CF06F7D00E1392D /* AnimeData */,
 			);
-			name = JikanAPIService;
+			name = AnimeData;
 			packageProductDependencies = (
-				1C7BC0992CD9BE7300041967 /* CombineMoya */,
-				1C7BC09B2CD9BE7300041967 /* Moya */,
-				1C7BC0AE2CD9E33400041967 /* MoyaHelper */,
 			);
-			productName = JikanAPIService;
-			productReference = 1C7BC07D2CD9BCA700041967 /* JikanAPIService.framework */;
+			productName = AnimeData;
+			productReference = 1C0735672CF06F7D00E1392D /* AnimeData.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		1C7BC0862CD9BCA700041967 /* JikanAPIServiceTests */ = {
+		1C0735702CF06F7D00E1392D /* AnimeDataTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1C7BC0952CD9BCA700041967 /* Build configuration list for PBXNativeTarget "JikanAPIServiceTests" */;
+			buildConfigurationList = 1C07357F2CF06F7D00E1392D /* Build configuration list for PBXNativeTarget "AnimeDataTests" */;
 			buildPhases = (
-				1C7BC0832CD9BCA700041967 /* Sources */,
-				1C7BC0842CD9BCA700041967 /* Frameworks */,
-				1C7BC0852CD9BCA700041967 /* Resources */,
+				1C07356D2CF06F7D00E1392D /* Sources */,
+				1C07356E2CF06F7D00E1392D /* Frameworks */,
+				1C07356F2CF06F7D00E1392D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				1C7BC08A2CD9BCA700041967 /* PBXTargetDependency */,
+				1C0735742CF06F7D00E1392D /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				1C7BC08B2CD9BCA700041967 /* JikanAPIServiceTests */,
+				1C0735752CF06F7D00E1392D /* AnimeDataTests */,
 			);
-			name = JikanAPIServiceTests;
+			name = AnimeDataTests;
 			packageProductDependencies = (
 			);
-			productName = JikanAPIServiceTests;
-			productReference = 1C7BC0872CD9BCA700041967 /* JikanAPIServiceTests.xctest */;
+			productName = AnimeDataTests;
+			productReference = 1C0735712CF06F7D00E1392D /* AnimeDataTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		1C7BC0742CD9BCA700041967 /* Project object */ = {
+		1C07355E2CF06F7D00E1392D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
-					1C7BC07C2CD9BCA700041967 = {
+					1C0735662CF06F7D00E1392D = {
 						CreatedOnToolsVersion = 16.1;
 					};
-					1C7BC0862CD9BCA700041967 = {
+					1C0735702CF06F7D00E1392D = {
 						CreatedOnToolsVersion = 16.1;
 					};
 				};
 			};
-			buildConfigurationList = 1C7BC0772CD9BCA700041967 /* Build configuration list for PBXProject "JikanAPIService" */;
+			buildConfigurationList = 1C0735612CF06F7D00E1392D /* Build configuration list for PBXProject "AnimeData" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 1C7BC0732CD9BCA700041967;
+			mainGroup = 1C07355D2CF06F7D00E1392D;
 			minimizedProjectReferenceProxies = 1;
-			packageReferences = (
-				1C7BC0982CD9BE7300041967 /* XCRemoteSwiftPackageReference "Moya" */,
-				1C7BC0AD2CD9E33400041967 /* XCRemoteSwiftPackageReference "MoyaHelper" */,
-			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 1C7BC07E2CD9BCA700041967 /* Products */;
+			productRefGroup = 1C0735682CF06F7D00E1392D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1C7BC07C2CD9BCA700041967 /* JikanAPIService */,
-				1C7BC0862CD9BCA700041967 /* JikanAPIServiceTests */,
+				1C0735662CF06F7D00E1392D /* AnimeData */,
+				1C0735702CF06F7D00E1392D /* AnimeDataTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1C7BC07B2CD9BCA700041967 /* Resources */ = {
+		1C0735652CF06F7D00E1392D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1C7BC0852CD9BCA700041967 /* Resources */ = {
+		1C07356F2CF06F7D00E1392D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -244,14 +203,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1C7BC0792CD9BCA700041967 /* Sources */ = {
+		1C0735632CF06F7D00E1392D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1C7BC0832CD9BCA700041967 /* Sources */ = {
+		1C07356D2CF06F7D00E1392D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -261,15 +220,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1C7BC08A2CD9BCA700041967 /* PBXTargetDependency */ = {
+		1C0735742CF06F7D00E1392D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1C7BC07C2CD9BCA700041967 /* JikanAPIService */;
-			targetProxy = 1C7BC0892CD9BCA700041967 /* PBXContainerItemProxy */;
+			target = 1C0735662CF06F7D00E1392D /* AnimeData */;
+			targetProxy = 1C0735732CF06F7D00E1392D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1C7BC0912CD9BCA700041967 /* Debug */ = {
+		1C07357B2CF06F7D00E1392D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
@@ -296,19 +255,20 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.likeabossapp.JikanAPIService;
+				PRODUCT_BUNDLE_IDENTIFIER = com.likeabossapp.AnimeData;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = auto;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.1;
 			};
 			name = Debug;
 		};
-		1C7BC0922CD9BCA700041967 /* Release */ = {
+		1C07357C2CF06F7D00E1392D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
@@ -335,24 +295,24 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.likeabossapp.JikanAPIService;
+				PRODUCT_BUNDLE_IDENTIFIER = com.likeabossapp.AnimeData;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = auto;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.1;
 			};
 			name = Release;
 		};
-		1C7BC0932CD9BCA700041967 /* Debug */ = {
+		1C07357D2CF06F7D00E1392D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -409,18 +369,16 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 6.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		1C7BC0942CD9BCA700041967 /* Release */ = {
+		1C07357E2CF06F7D00E1392D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -469,13 +427,12 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_VERSION = 6.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		1C7BC0962CD9BCA700041967 /* Debug */ = {
+		1C0735802CF06F7D00E1392D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
@@ -484,17 +441,18 @@
 				DEVELOPMENT_TEAM = R33X9HN7ET;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.likeabossapp.JikanAPIServiceTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.likeabossapp.AnimeDataTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.1;
 			};
 			name = Debug;
 		};
-		1C7BC0972CD9BCA700041967 /* Release */ = {
+		1C0735812CF06F7D00E1392D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
@@ -503,11 +461,12 @@
 				DEVELOPMENT_TEAM = R33X9HN7ET;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.likeabossapp.JikanAPIServiceTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.likeabossapp.AnimeDataTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.1;
 			};
@@ -516,71 +475,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1C7BC0772CD9BCA700041967 /* Build configuration list for PBXProject "JikanAPIService" */ = {
+		1C0735612CF06F7D00E1392D /* Build configuration list for PBXProject "AnimeData" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1C7BC0932CD9BCA700041967 /* Debug */,
-				1C7BC0942CD9BCA700041967 /* Release */,
+				1C07357D2CF06F7D00E1392D /* Debug */,
+				1C07357E2CF06F7D00E1392D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1C7BC0902CD9BCA700041967 /* Build configuration list for PBXNativeTarget "JikanAPIService" */ = {
+		1C07357A2CF06F7D00E1392D /* Build configuration list for PBXNativeTarget "AnimeData" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1C7BC0912CD9BCA700041967 /* Debug */,
-				1C7BC0922CD9BCA700041967 /* Release */,
+				1C07357B2CF06F7D00E1392D /* Debug */,
+				1C07357C2CF06F7D00E1392D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1C7BC0952CD9BCA700041967 /* Build configuration list for PBXNativeTarget "JikanAPIServiceTests" */ = {
+		1C07357F2CF06F7D00E1392D /* Build configuration list for PBXNativeTarget "AnimeDataTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1C7BC0962CD9BCA700041967 /* Debug */,
-				1C7BC0972CD9BCA700041967 /* Release */,
+				1C0735802CF06F7D00E1392D /* Debug */,
+				1C0735812CF06F7D00E1392D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		1C7BC0982CD9BE7300041967 /* XCRemoteSwiftPackageReference "Moya" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Moya/Moya.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 15.0.3;
-			};
-		};
-		1C7BC0AD2CD9E33400041967 /* XCRemoteSwiftPackageReference "MoyaHelper" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/daoseng33/MoyaHelper.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		1C7BC0992CD9BE7300041967 /* CombineMoya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1C7BC0982CD9BE7300041967 /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = CombineMoya;
-		};
-		1C7BC09B2CD9BE7300041967 /* Moya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1C7BC0982CD9BE7300041967 /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = Moya;
-		};
-		1C7BC0AE2CD9E33400041967 /* MoyaHelper */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1C7BC0AD2CD9E33400041967 /* XCRemoteSwiftPackageReference "MoyaHelper" */;
-			productName = MoyaHelper;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 1C7BC0742CD9BCA700041967 /* Project object */;
+	rootObject = 1C07355E2CF06F7D00E1392D /* Project object */;
 }

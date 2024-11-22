@@ -10,6 +10,7 @@ import Combine
 import Moya
 import CombineMoya
 import MoyaHelper
+import AnimeData
 
 public struct TopAPIService: TopAPIServiceProtocol {
     private let provider = MoyaProvider<TopAPI>.default

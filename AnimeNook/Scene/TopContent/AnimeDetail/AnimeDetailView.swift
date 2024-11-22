@@ -7,10 +7,12 @@
 
 import SwiftUI
 import Kingfisher
+import SFSafeSymbols
 
 struct AnimeDetailView: View {
     private var viewModel: AnimeDetailViewModel
     @State private var isImageViewerPresented = false
+    @State private var heartSymbol: SFSymbol = .heart
     
     init(viewModel: AnimeDetailViewModel) {
         self.viewModel = viewModel
@@ -30,8 +32,21 @@ struct AnimeDetailView: View {
                     }
                 
                 VStack(alignment: .leading, spacing: Constant.UI.spacing2) {
-                    Text(viewModel.title)
-                        .font(.headline)
+                    HStack {
+                        Text(viewModel.title)
+                            .font(.headline)
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            heartSymbol = .heartFill
+                        }) {
+                            Image(systemSymbol: heartSymbol)
+                                .foregroundStyle(.red)
+                                .font(.system(size: 25))
+                        }
+                    }
+                   
                     Text(viewModel.type)
                     Text(viewModel.source)
                     Text(viewModel.rating)

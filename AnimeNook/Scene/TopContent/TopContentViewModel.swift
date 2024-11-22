@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import JikanAPIService
+import AnimeData
 import SwiftUI
 
 final class TopContentViewModel: ObservableObject {
