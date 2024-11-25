@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C00C26D2CF41E3100B3527D /* AnimeData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C00C26C2CF41E3100B3527D /* AnimeData.framework */; };
+		1C00C26E2CF41E3100B3527D /* AnimeData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C00C26C2CF41E3100B3527D /* AnimeData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1C7BC0C42CDA227C00041967 /* JikanAPIService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7BC0C32CDA227C00041967 /* JikanAPIService.framework */; };
 		1C7BC0C52CDA227C00041967 /* JikanAPIService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7BC0C32CDA227C00041967 /* JikanAPIService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1C7BC13E2CEAE8CD00041967 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1C7BC13D2CEAE8CD00041967 /* Kingfisher */; };
@@ -38,6 +40,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				1C7BC0C52CDA227C00041967 /* JikanAPIService.framework in Embed Frameworks */,
+				1C00C26E2CF41E3100B3527D /* AnimeData.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,6 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C00C26C2CF41E3100B3527D /* AnimeData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AnimeData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C5A54BD2CD8BC5E004AB1F0 /* AnimeNook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimeNook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C5A54CE2CD8BC5F004AB1F0 /* AnimeNookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimeNookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C5A54D82CD8BC5F004AB1F0 /* AnimeNookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimeNookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +69,7 @@
 				1C7BC2252CEDBD9700041967 /* SFSafeSymbols in Frameworks */,
 				1C7BC13E2CEAE8CD00041967 /* Kingfisher in Frameworks */,
 				1C7BC0C42CDA227C00041967 /* JikanAPIService.framework in Frameworks */,
+				1C00C26D2CF41E3100B3527D /* AnimeData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +114,7 @@
 		1C7BC0C22CDA227C00041967 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1C00C26C2CF41E3100B3527D /* AnimeData.framework */,
 				1C7BC0C32CDA227C00041967 /* JikanAPIService.framework */,
 			);
 			name = Frameworks;
@@ -351,7 +357,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -410,7 +416,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MTL_ENABLE_DEBUG_INFO = NO;

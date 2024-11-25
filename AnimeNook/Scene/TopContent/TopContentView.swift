@@ -112,7 +112,7 @@ struct TopContentView: View {
                 ForEach(viewModel.topAnimes, id: \.malId) { anime in
                     let contentDetailViewModel = AnimeDetailViewModel(anime: anime)
                     NavigationLink(destination: AnimeDetailView(viewModel: contentDetailViewModel)) {
-                        TopGridItem(imageUrl: URL(string: anime.imageUrl), title: anime.title, itemWidth: itemWidth)
+                        TopGridItem(imageUrl: URL(string: anime.images.jpg.imageUrl), title: anime.title, itemWidth: itemWidth)
                             .onAppear {
                                 viewModel.loadMoreAnimeIfNeeded(anime: anime)
                             }

@@ -19,7 +19,7 @@ final class AnimeDetailViewModel {
     init(anime: TopAnime) {
         title = anime.title
         summary = anime.synopsis
-        imageURL = URL(string: anime.largeImageUrl)
+        imageURL = URL(string: anime.images.jpg.largeImageUrl)
         rating = "Rating: \(anime.rating)"
         type = "Type: \(anime.type)"
         source = "Source: \(anime.source)"
