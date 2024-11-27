@@ -21,7 +21,7 @@ final class AnimeDetailViewModel: ObservableObject {
     let source: String
     private let anime: TopAnime
     @Published var isFavorite: Bool = false
-    private var cancellables: Set<AnyCancellable> = []
+    private var cancelables: Set<AnyCancellable> = []
     private var storage: DataStorage<TopAnime>
     
     init(anime: TopAnime, modelContext: ModelContext) {
@@ -64,6 +64,6 @@ final class AnimeDetailViewModel: ObservableObject {
                     }
                 }
             }
-            .store(in: &cancellables)
+            .store(in: &cancelables)
     }
 }

@@ -8,13 +8,25 @@
 import SwiftUI
 import Kingfisher
 import SFSafeSymbols
+import Combine
 
 struct MangaDetailView: View {
     private let viewModel: MangaDetailViewModel
     @State private var isImageViewerPresented = false
+    @State private var heartSymbol: SFSymbol = .heart
+    @State private var cancelables: Set<AnyCancellable> = []
     
     init(viewModel: MangaDetailViewModel) {
         self.viewModel = viewModel
+    }
+    
+    private func setupPublisher() {
+        viewModel.$isFavorite
+            .receive(on: DispatchQueue.main)
+            .sink { isFavorite in
+                heartSymbol = isFavorite ? .heartFill : .heart
+            }
+            .store(in: &cancelables)
     }
     
     var body: some View {
@@ -30,8 +42,20 @@ struct MangaDetailView: View {
                         isImageViewerPresented = true
                     }
                 VStack(alignment: .leading, spacing: Constant.UI.spacing2) {
-                    Text(viewModel.title)
-                        .font(.headline)
+                    HStack {
+                        Text(viewModel.title)
+                            .font(.headline)
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            viewModel.isFavorite.toggle()
+                        }) {
+                            Image(systemSymbol: heartSymbol)
+                                .foregroundStyle(.red)
+                                .font(.system(size: 25))
+                        }
+                    }
                     Text(viewModel.type)
                     HStack(spacing: Constant.UI.spacing1) {
                         Image(systemSymbol: .starFill)
@@ -51,6 +75,9 @@ struct MangaDetailView: View {
         .toolbarRole(.editor)
         .fullScreenCover(isPresented: $isImageViewerPresented) {
             ImageViewer(imageUrl: viewModel.imageURL, isPresented: $isImageViewerPresented)
+        }
+        .onAppear() {
+            setupPublisher()
         }
     }
 }

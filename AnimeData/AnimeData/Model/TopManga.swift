@@ -9,12 +9,12 @@ import Foundation
 import SwiftData
 
 @Model
-public final class TopManga: Identifiable, Decodable {
+public final class TopManga: Identifiable, Codable, Equatable {
     @Attribute(.unique) public var malId: Int
     public var url: String
     public var images: Images
     public var approved: Bool
-    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self)) public var titles: [Title]
+    @Relationship(deleteRule: .cascade) public var titles: [Title]
     public var title: String
     public var titleEnglish: String?
     public var titleJapanese: String?
@@ -23,7 +23,7 @@ public final class TopManga: Identifiable, Decodable {
     public var volumes: Int?
     public var status: String
     public var publishing: Bool
-    public var published: PublishedDate
+    @Relationship(deleteRule: .cascade) public var published: PublishedDate?
     public var score: Double
     public var scoredBy: Int
     public var rank: Int
@@ -32,12 +32,12 @@ public final class TopManga: Identifiable, Decodable {
     public var favorites: Int
     public var synopsis: String
     public var background: String?
-    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self)) public var authors: [Author]
-    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self)) public var serializations: [Author]
-    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self)) public var genres: [Author]
-    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self)) public var explicitGenres: [Author]
-    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self)) public var themes: [Author]
-    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self)) public var demographics: [Author]
+    @Relationship(deleteRule: .cascade) public var authors: [Author]
+    @Relationship(deleteRule: .cascade) public var serializations: [Author]
+    @Relationship(deleteRule: .cascade) public var genres: [Author]
+    @Relationship(deleteRule: .cascade) public var explicitGenres: [Author]
+    @Relationship(deleteRule: .cascade) public var themes: [Author]
+    @Relationship(deleteRule: .cascade) public var demographics: [Author]
     
     public var id: Int { malId }
     
@@ -88,7 +88,7 @@ public final class TopManga: Identifiable, Decodable {
         self.volumes = try container.decodeIfPresent(Int.self, forKey: .volumes)
         self.status = try container.decode(String.self, forKey: .status)
         self.publishing = try container.decode(Bool.self, forKey: .publishing)
-        self.published = try container.decode(PublishedDate.self, forKey: .published)
+        self.published = try container.decodeIfPresent(PublishedDate.self, forKey: .published)
         self.score = try container.decode(Double.self, forKey: .score)
         self.scoredBy = try container.decode(Int.self, forKey: .scoredBy)
         self.rank = try container.decode(Int.self, forKey: .rank)
@@ -119,7 +119,7 @@ public final class TopManga: Identifiable, Decodable {
         volumes: Int? = nil,
         status: String,
         publishing: Bool,
-        published: PublishedDate,
+        published: PublishedDate? = nil,
         score: Double,
         scoredBy: Int,
         rank: Int,
@@ -164,16 +164,70 @@ public final class TopManga: Identifiable, Decodable {
         self.themes = themes
         self.demographics = demographics
     }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(malId, forKey: .malId)
+        try container.encode(url, forKey: .url)
+        try container.encode(images, forKey: .images)
+        try container.encode(approved, forKey: .approved)
+        try container.encode(titles, forKey: .titles)
+        try container.encode(title, forKey: .title)
+        try container.encodeIfPresent(titleEnglish, forKey: .titleEnglish)
+        try container.encodeIfPresent(titleJapanese, forKey: .titleJapanese)
+        try container.encode(type, forKey: .type)
+        try container.encodeIfPresent(chapters, forKey: .chapters)
+        try container.encodeIfPresent(volumes, forKey: .volumes)
+        try container.encode(status, forKey: .status)
+        try container.encode(publishing, forKey: .publishing)
+        try container.encodeIfPresent(published, forKey: .published)
+        try container.encode(score, forKey: .score)
+        try container.encode(scoredBy, forKey: .scoredBy)
+        try container.encode(rank, forKey: .rank)
+        try container.encode(popularity, forKey: .popularity)
+        try container.encode(members, forKey: .members)
+        try container.encode(favorites, forKey: .favorites)
+        try container.encode(synopsis, forKey: .synopsis)
+        try container.encodeIfPresent(background, forKey: .background)
+        try container.encode(authors, forKey: .authors)
+        try container.encode(serializations, forKey: .serializations)
+        try container.encode(genres, forKey: .genres)
+        try container.encode(explicitGenres, forKey: .explicitGenres)
+        try container.encode(themes, forKey: .themes)
+        try container.encode(demographics, forKey: .demographics)
+    }
+    
+    public static func == (lhs: TopManga, rhs: TopManga) -> Bool {
+        lhs.malId == rhs.malId
+    }
 }
-
 
 // MARK: - Author
 @Model
-public final class Author: Decodable {
+public final class Author: Codable {
     public var malId: Int
     public var type: String
     public var name: String
     public var url: String
+    
+    @Relationship(inverse: \TopManga.authors)
+    public var mangaAuthors: TopManga?
+    
+    @Relationship(inverse: \TopManga.serializations)
+    public var mangaSerializations: TopManga?
+    
+    @Relationship(inverse: \TopManga.genres)
+    public var mangaGenres: TopManga?
+    
+    @Relationship(inverse: \TopManga.explicitGenres)
+    public var mangaExplicitGenres: TopManga?
+    
+    @Relationship(inverse: \TopManga.themes)
+    public var mangaThemes: TopManga?
+    
+    @Relationship(inverse: \TopManga.demographics)
+    public var mangaDemographics: TopManga?
     
     enum CodingKeys: String, CodingKey {
         case malId
@@ -196,15 +250,27 @@ public final class Author: Decodable {
         self.name = name
         self.url = url
     }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(malId, forKey: .malId)
+        try container.encode(type, forKey: .type)
+        try container.encode(name, forKey: .name)
+        try container.encode(url, forKey: .url)
+    }
 }
 
 // MARK: - Published
 @Model
-public final class PublishedDate: Decodable {
+public final class PublishedDate: Codable {
     public var string: String?
     public var from: String?
     public var to: String?
     public var prop: Prop
+    
+    @Relationship(inverse: \TopManga.published)
+    public var manga: TopManga?
     
     enum CodingKeys: String, CodingKey {
         case string
@@ -226,6 +292,15 @@ public final class PublishedDate: Decodable {
         self.from = from
         self.to = to
         self.prop = prop
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encodeIfPresent(string, forKey: .string)
+        try container.encodeIfPresent(from, forKey: .from)
+        try container.encodeIfPresent(to, forKey: .to)
+        try container.encode(prop, forKey: .prop)
     }
 }
 

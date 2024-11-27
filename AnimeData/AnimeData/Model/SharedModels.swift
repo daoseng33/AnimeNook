@@ -140,6 +140,9 @@ public final class Title: Codable {
     @Relationship(inverse: \TopAnime.titles)
     public var anime: TopAnime?
     
+    @Relationship(inverse: \TopManga.titles)
+    public var manga: TopManga?
+    
     enum CodingKeys: String, CodingKey {
         case type, title
     }

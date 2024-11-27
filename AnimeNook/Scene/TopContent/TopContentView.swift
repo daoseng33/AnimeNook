@@ -155,7 +155,7 @@ struct TopContentView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: spacing) {
                 ForEach(viewModel.topMangas, id: \.malId) { manga in
-                    let mangaViewModel = MangaDetailViewModel(manga: manga)
+                    let mangaViewModel = MangaDetailViewModel(manga: manga, modelContext: modelContext)
                     NavigationLink(destination: MangaDetailView(viewModel: mangaViewModel)) {
                         TopGridItem(imageUrl: URL(string: manga.images.jpg.imageUrl), title: manga.title, itemWidth: itemWidth)
                             .onAppear {

@@ -246,6 +246,10 @@ public final class TopAnime: Identifiable, Codable, Equatable {
         try container.encode(themes, forKey: .themes)
         try container.encode(demographics, forKey: .demographics)
     }
+    
+    public static func == (lhs: TopAnime, rhs: TopAnime) -> Bool {
+        lhs.malId == rhs.malId
+    }
 }
 
 
