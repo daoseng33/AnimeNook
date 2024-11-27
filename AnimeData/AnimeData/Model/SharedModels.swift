@@ -10,9 +10,12 @@ import SwiftData
 
 // MARK: - Images
 @Model
-public final class Images: Decodable {
+public final class Images: Codable {
     public var jpg: ImageUrls
     public var webp: ImageUrls
+    
+    @Relationship(inverse: \TopAnime.images)
+    public var anime: TopAnime?
     
     enum CodingKeys: String, CodingKey {
         case jpg, webp
@@ -28,11 +31,17 @@ public final class Images: Decodable {
         self.jpg = try container.decode(ImageUrls.self, forKey: .jpg)
         self.webp = try container.decode(ImageUrls.self, forKey: .webp)
     }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(jpg, forKey: .jpg)
+        try container.encode(webp, forKey: .webp)
+    }
 }
 
 // MARK: - ImageUrls
 @Model
-public final class ImageUrls: Decodable {
+public final class ImageUrls: Codable {
     public var imageUrl: String
     public var smallImageUrl: String
     public var largeImageUrl: String
@@ -53,11 +62,18 @@ public final class ImageUrls: Decodable {
         self.smallImageUrl = try container.decode(String.self, forKey: .smallImageUrl)
         self.largeImageUrl = try container.decode(String.self, forKey: .largeImageUrl)
     }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(imageUrl, forKey: .imageUrl)
+        try container.encode(smallImageUrl, forKey: .smallImageUrl)
+        try container.encode(largeImageUrl, forKey: .largeImageUrl)
+    }
 }
 
 // MARK: - Prop
 @Model
-public final class Prop: Decodable {
+public final class Prop: Codable {
     public var from: DateProp
     public var to: DateProp
     
@@ -75,11 +91,17 @@ public final class Prop: Decodable {
         self.from = try container.decode(DateProp.self, forKey: .from)
         self.to = try container.decode(DateProp.self, forKey: .to)
     }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(from, forKey: .from)
+        try container.encode(to, forKey: .to)
+    }
 }
 
 // MARK: - DateProp
 @Model
-public final class DateProp: Decodable {
+public final class DateProp: Codable {
     public var day: Int?
     public var month: Int?
     public var year: Int?
@@ -100,13 +122,23 @@ public final class DateProp: Decodable {
         self.month = try container.decodeIfPresent(Int.self, forKey: .month)
         self.year = try container.decodeIfPresent(Int.self, forKey: .year)
     }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(day, forKey: .day)
+        try container.encodeIfPresent(month, forKey: .month)
+        try container.encodeIfPresent(year, forKey: .year)
+    }
 }
 
 // MARK: - Title
 @Model
-public final class Title: Decodable {
+public final class Title: Codable {
     public var type: String
     public var title: String
+    
+    @Relationship(inverse: \TopAnime.titles)
+    public var anime: TopAnime?
     
     enum CodingKeys: String, CodingKey {
         case type, title
@@ -122,11 +154,17 @@ public final class Title: Decodable {
         self.type = try container.decode(String.self, forKey: .type)
         self.title = try container.decode(String.self, forKey: .title)
     }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(type, forKey: .type)
+        try container.encode(title, forKey: .title)
+    }
 }
 
 // MARK: - Pagination
 @Model
-public final class Pagination: Decodable {
+public final class Pagination: Codable {
     public var lastVisiblePage: Int
     public var hasNextPage: Bool
     public var items: PaginationItems
@@ -153,11 +191,19 @@ public final class Pagination: Decodable {
         self.items = try container.decode(PaginationItems.self, forKey: .items)
         self.currentPage = try container.decode(Int.self, forKey: .currentPage)
     }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(lastVisiblePage, forKey: .lastVisiblePage)
+        try container.encode(hasNextPage, forKey: .hasNextPage)
+        try container.encode(items, forKey: .items)
+        try container.encode(currentPage, forKey: .currentPage)
+    }
 }
 
 // MARK: - PaginationItems
 @Model
-public final class PaginationItems: Decodable {
+public final class PaginationItems: Codable {
     public var count: Int
     public var total: Int
     public var perPage: Int
@@ -179,5 +225,11 @@ public final class PaginationItems: Decodable {
         self.total = try container.decode(Int.self, forKey: .total)
         self.perPage = try container.decode(Int.self, forKey: .perPage)
     }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(count, forKey: .count)
+        try container.encode(total, forKey: .total)
+        try container.encode(perPage, forKey: .perPage)
+    }
 }
-

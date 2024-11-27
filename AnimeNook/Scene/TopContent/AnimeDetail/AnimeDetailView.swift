@@ -8,14 +8,25 @@
 import SwiftUI
 import Kingfisher
 import SFSafeSymbols
+import Combine
 
 struct AnimeDetailView: View {
-    private var viewModel: AnimeDetailViewModel
+    @StateObject private var viewModel: AnimeDetailViewModel
     @State private var isImageViewerPresented = false
     @State private var heartSymbol: SFSymbol = .heart
+    @State private var cancelables: Set<AnyCancellable> = []
     
     init(viewModel: AnimeDetailViewModel) {
-        self.viewModel = viewModel
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
+    private func setupPublisher() {
+        viewModel.$isFavorite
+            .receive(on: DispatchQueue.main)
+            .sink { isFavorite in
+                heartSymbol = isFavorite ? .heartFill : .heart
+            }
+            .store(in: &cancelables)
     }
     
     var body: some View {
@@ -39,7 +50,7 @@ struct AnimeDetailView: View {
                         Spacer()
                         
                         Button(action: {
-                            heartSymbol = .heartFill
+                            viewModel.isFavorite.toggle()
                         }) {
                             Image(systemSymbol: heartSymbol)
                                 .foregroundStyle(.red)
@@ -62,6 +73,9 @@ struct AnimeDetailView: View {
         .toolbarRole(.editor)
         .fullScreenCover(isPresented: $isImageViewerPresented) {
             ImageViewer(imageUrl: viewModel.imageURL, isPresented: $isImageViewerPresented)
+        }
+        .onAppear() {
+            setupPublisher()
         }
     }
 }

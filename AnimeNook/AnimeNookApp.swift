@@ -7,7 +7,9 @@
 
 import SwiftUI
 import JikanAPIService
+import AnimeData
 import SFSafeSymbols
+import SwiftData
 
 @main
 struct AnimeNookApp: App {
@@ -23,6 +25,10 @@ struct AnimeNookApp: App {
             case .settings: return "Settings"
             }
         }
+    }
+    
+    init() {
+        StringArrayTransformer.register()
     }
     
     var body: some Scene {
@@ -44,5 +50,6 @@ struct AnimeNookApp: App {
                     }
             }
         }
+        .modelContainer(for: TopAnime.self, inMemory: false)
     }
 }

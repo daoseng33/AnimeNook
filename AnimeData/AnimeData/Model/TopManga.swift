@@ -10,11 +10,11 @@ import SwiftData
 
 @Model
 public final class TopManga: Identifiable, Decodable {
-    public var malId: Int
+    @Attribute(.unique) public var malId: Int
     public var url: String
     public var images: Images
     public var approved: Bool
-    public var titles: [Title]
+    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self)) public var titles: [Title]
     public var title: String
     public var titleEnglish: String?
     public var titleJapanese: String?
@@ -32,12 +32,12 @@ public final class TopManga: Identifiable, Decodable {
     public var favorites: Int
     public var synopsis: String
     public var background: String?
-    public var authors: [Author]
-    public var serializations: [Author]
-    public var genres: [Author]
-    public var explicitGenres: [Author]
-    public var themes: [Author]
-    public var demographics: [Author]
+    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self)) public var authors: [Author]
+    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self)) public var serializations: [Author]
+    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self)) public var genres: [Author]
+    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self)) public var explicitGenres: [Author]
+    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self)) public var themes: [Author]
+    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self)) public var demographics: [Author]
     
     public var id: Int { malId }
     

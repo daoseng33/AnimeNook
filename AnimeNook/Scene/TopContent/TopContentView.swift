@@ -7,9 +7,11 @@
 
 import SwiftUI
 import JikanAPIService
+import SwiftData
 
 struct TopContentView: View {
     // MARK: - Property
+    @Environment(\.modelContext) private var modelContext
     @StateObject private var viewModel: TopContentViewModel
     @State private var selectedSegment: NavigationSegment = .anime
     private let spacing: CGFloat = Constant.UI.spacing4
@@ -110,7 +112,7 @@ struct TopContentView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: spacing) {
                 ForEach(viewModel.topAnimes, id: \.malId) { anime in
-                    let contentDetailViewModel = AnimeDetailViewModel(anime: anime)
+                    let contentDetailViewModel = AnimeDetailViewModel(anime: anime, modelContext: modelContext)
                     NavigationLink(destination: AnimeDetailView(viewModel: contentDetailViewModel)) {
                         TopGridItem(imageUrl: URL(string: anime.images.jpg.imageUrl), title: anime.title, itemWidth: itemWidth)
                             .onAppear {

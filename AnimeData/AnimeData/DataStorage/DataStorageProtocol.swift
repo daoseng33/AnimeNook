@@ -11,7 +11,11 @@ protocol DataStorageProtocol {
     associatedtype T
     
     func create(_ item: T) async throws
-    func fetch(predicate: Predicate<T>?) async throws -> [T]
+    func fetch(
+        predicate: Predicate<T>?,
+        sortBy: [SortDescriptor<T>],
+        limit: Int?
+    ) async throws -> [T]
     func update(_ item: T) async throws
     func delete(_ item: T) async throws
 }
