@@ -113,7 +113,10 @@ struct TopContentView: View {
             LazyVGrid(columns: columns, spacing: spacing) {
                 ForEach(viewModel.topAnimes, id: \.malId) { anime in
                     let contentDetailViewModel = AnimeDetailViewModel(anime: anime, modelContext: modelContext)
-                    NavigationLink(destination: AnimeDetailView(viewModel: contentDetailViewModel)) {
+                    let animeDetailView =
+                    AnimeDetailView(viewModel: contentDetailViewModel)
+                        .toolbar(.hidden, for: .tabBar)
+                    NavigationLink(destination: animeDetailView) {
                         TopGridItem(imageUrl: URL(string: anime.images.jpg.imageUrl), title: anime.title, itemWidth: itemWidth)
                             .onAppear {
                                 viewModel.loadMoreAnimeIfNeeded(anime: anime)
@@ -156,7 +159,10 @@ struct TopContentView: View {
             LazyVGrid(columns: columns, spacing: spacing) {
                 ForEach(viewModel.topMangas, id: \.malId) { manga in
                     let mangaViewModel = MangaDetailViewModel(manga: manga, modelContext: modelContext)
-                    NavigationLink(destination: MangaDetailView(viewModel: mangaViewModel)) {
+                    let mangaDetailView =
+                    MangaDetailView(viewModel: mangaViewModel)
+                        .toolbar(.hidden, for: .tabBar)
+                    NavigationLink(destination: mangaDetailView) {
                         TopGridItem(imageUrl: URL(string: manga.images.jpg.imageUrl), title: manga.title, itemWidth: itemWidth)
                             .onAppear {
                                 viewModel.loadMoreMangaIfNeeded(manga: manga)
