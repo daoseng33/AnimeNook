@@ -33,6 +33,7 @@ struct AnimeDetailView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 KFImage(viewModel.imageURL)
+                    .fade(duration: 0.3)
                     .placeholder {
                         ProgressView()
                     }
