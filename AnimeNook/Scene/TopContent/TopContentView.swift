@@ -8,12 +8,11 @@
 import SwiftUI
 import JikanAPIService
 import SwiftData
+import AnimeData
 
 struct TopContentView: View {
     // MARK: - Property
-    @Environment(\.modelContext) private var modelContext
     @StateObject private var viewModel: TopContentViewModel
-    @State private var selectedSegment: NavigationSegment = .anime
     private let spacing: CGFloat = Constant.UI.spacing4
     private let numberOfColumns = 2
     private let scaleEffect: CGFloat = 0.85
@@ -28,11 +27,6 @@ struct TopContentView: View {
         return Array(repeating: GridItem(.flexible(), spacing: spacing), count: numberOfColumns)
     }
     
-    enum NavigationSegment: String, CaseIterable {
-        case anime = "Anime"
-        case manga = "Manga"
-    }
-    
     // MARK: - Init
     init(viewModel: TopContentViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -44,7 +38,7 @@ struct TopContentView: View {
             VStack {
                 pickerSection
                 
-                switch selectedSegment {
+                switch viewModel.selectedSegment {
                 case .anime:
                     animeFilterSection
                     animeGridSection
@@ -57,7 +51,7 @@ struct TopContentView: View {
             .padding(.horizontal)
         }
         .refreshable {
-            switch selectedSegment {
+            switch viewModel.selectedSegment {
             case .anime:
                 viewModel.reloadAnimeData()
                 
@@ -68,7 +62,7 @@ struct TopContentView: View {
     }
     
     private var pickerSection: some View {
-        Picker("Type", selection: $selectedSegment) {
+        Picker("TopContentPicker", selection: $viewModel.selectedSegment) {
             ForEach(NavigationSegment.allCases, id: \.self) { type in
                 Text(type.rawValue).tag(type)
             }
@@ -112,7 +106,7 @@ struct TopContentView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: spacing) {
                 ForEach(viewModel.topAnimes, id: \.malId) { anime in
-                    let contentDetailViewModel = AnimeDetailViewModel(anime: anime, modelContext: modelContext)
+                    let contentDetailViewModel = AnimeDetailViewModel(anime: anime, storage: viewModel.animeStorage)
                     let animeDetailView =
                     AnimeDetailView(viewModel: contentDetailViewModel)
                         .toolbar(.hidden, for: .tabBar)
@@ -158,7 +152,7 @@ struct TopContentView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: spacing) {
                 ForEach(viewModel.topMangas, id: \.malId) { manga in
-                    let mangaViewModel = MangaDetailViewModel(manga: manga, modelContext: modelContext)
+                    let mangaViewModel = MangaDetailViewModel(manga: manga, storage: viewModel.mangaStorage)
                     let mangaDetailView =
                     MangaDetailView(viewModel: mangaViewModel)
                         .toolbar(.hidden, for: .tabBar)
@@ -178,8 +172,8 @@ struct TopContentView: View {
     }
 }
 
-#Preview {
-    let apiService = TopAPIService()
-    let viewModel = TopContentViewModel(apiService: apiService)
-    TopContentView(viewModel: viewModel)
-}
+//#Preview {
+//    let apiService = TopAPIService()
+//    let viewModel = TopContentViewModel(apiService: apiService, modelContext: <#ModelContext#>)
+//    TopContentView(viewModel: viewModel)
+//}

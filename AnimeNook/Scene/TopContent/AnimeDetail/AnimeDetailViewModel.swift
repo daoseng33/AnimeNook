@@ -13,26 +13,26 @@ import SwiftData
 
 @MainActor
 final class AnimeDetailViewModel: ObservableObject {
+    private let anime: TopAnime
+    private let storage: DataStorage<TopAnime>
     let title: String
     let summary: String
     let imageURL: URL?
     let rating: String
     let type: String
     let source: String
-    private let anime: TopAnime
     @Published var isFavorite: Bool = false
     private var cancelables: Set<AnyCancellable> = []
-    private var storage: DataStorage<TopAnime>
     
-    init(anime: TopAnime, modelContext: ModelContext) {
+    init(anime: TopAnime, storage: DataStorage<TopAnime>) {
         self.anime = anime
+        self.storage = storage
         title = anime.title
         summary = anime.synopsis
         imageURL = URL(string: anime.images.jpg.largeImageUrl)
         rating = "Rating: \(anime.rating)"
         type = "Type: \(anime.type)"
         source = "Source: \(anime.source)"
-        storage = DataStorage(modelContext: modelContext)
         
         checkAnime(anime: anime)
         setupPublisher()
@@ -57,10 +57,14 @@ final class AnimeDetailViewModel: ObservableObject {
                 guard let self else { return }
                 
                 Task {
-                    if isFavorite {
-                        try? await storage.create(anime)
-                    } else {
-                        try? await storage.delete(anime)
+                    do {
+                        if isFavorite {
+                            try await storage.create(anime)
+                        } else {
+                            try await storage.delete(anime)
+                        }
+                    } catch {
+                        print("Storage Error: \(error.localizedDescription)")
                     }
                 }
             }

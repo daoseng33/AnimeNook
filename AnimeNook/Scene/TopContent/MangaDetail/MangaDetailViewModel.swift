@@ -18,18 +18,18 @@ final class MangaDetailViewModel: ObservableObject {
     let type: String
     let score: String
     @Published var isFavorite: Bool = false
-    private var storage: DataStorage<TopManga>
+    private let storage: DataStorage<TopManga>
     private let manga: TopManga
     private var cancelables: Set<AnyCancellable> = []
     
-    init(manga: TopManga, modelContext: ModelContext) {
+    init(manga: TopManga, storage: DataStorage<TopManga>) {
         self.manga = manga
+        self.storage = storage
         title = manga.title
         imageURL = URL(string: manga.images.jpg.largeImageUrl)
         summary = manga.synopsis
         type = "Type: \(manga.type)"
         score = "\(manga.score)"
-        storage = DataStorage(modelContext: modelContext)
         
         checkManga()
         setupPublisher()
@@ -54,14 +54,15 @@ final class MangaDetailViewModel: ObservableObject {
                 guard let self else { return }
                 
                 Task {
-                    if isFavorite {
-                        try? await storage.create(manga)
-                    } else {
-                        try? await storage.delete(manga)
+                    do {
+                        if isFavorite {
+                            try await storage.create(manga)
+                        } else {
+                            try await storage.delete(manga)
+                        }
+                    } catch {
+                        print("Storage Error: \(error.localizedDescription)")
                     }
-                    
-                    let manga = try? await storage.fetch()
-                    print("ray>> manga: \(manga)")                    
                 }
             }
             .store(in: &cancelables)

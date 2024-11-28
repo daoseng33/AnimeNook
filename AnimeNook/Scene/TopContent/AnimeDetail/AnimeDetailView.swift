@@ -11,13 +11,13 @@ import SFSafeSymbols
 import Combine
 
 struct AnimeDetailView: View {
-    @StateObject private var viewModel: AnimeDetailViewModel
+    private let viewModel: AnimeDetailViewModel
     @State private var isImageViewerPresented = false
     @State private var heartSymbol: SFSymbol = .heart
     @State private var cancelables: Set<AnyCancellable> = []
     
     init(viewModel: AnimeDetailViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+        self.viewModel = viewModel
     }
     
     private func setupPublisher() {

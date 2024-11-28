@@ -9,8 +9,9 @@ import Foundation
 import Combine
 import JikanAPIService
 import AnimeData
-import SwiftUI
+import SwiftData
 
+@MainActor
 final class TopContentViewModel: ObservableObject {
     @Published var topAnimes: [TopAnime] = []
     @Published var animeSelectedType = TopAnimeType.tv
@@ -21,13 +22,18 @@ final class TopContentViewModel: ObservableObject {
     @Published var mangaSelectedType = TopMangaType.manga
     @Published var mangaSelectedFilter: TopMangaFilter = .byPopularity
     @Published var mangaLoadingState: LoadingState = .initial
+    @Published var selectedSegment: NavigationSegment = .anime
+    var animeStorage: DataStorage<TopAnime>
+    var mangaStorage: DataStorage<TopManga>
     private var animeCurrentPage: Int = 1
     private var mangaCurrentPage: Int = 1
-    private var cancellables = Set<AnyCancellable>()
+    private var cancelables = Set<AnyCancellable>()
     private let apiService: TopAPIServiceProtocol
     
-    init(apiService: TopAPIServiceProtocol) {
+    init(apiService: TopAPIServiceProtocol, modelContext: ModelContext) {
         self.apiService = apiService
+        animeStorage = DataStorage(modelContext: modelContext)
+        mangaStorage = DataStorage(modelContext: modelContext)
         
         setupPublisher()
     }
@@ -40,7 +46,7 @@ final class TopContentViewModel: ObservableObject {
                 guard let self else { return }
                 reloadAnimeData()
             }
-            .store(in: &cancellables)
+            .store(in: &cancelables)
         
         Publishers.CombineLatest($mangaSelectedType, $mangaSelectedFilter)
             .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
@@ -49,7 +55,7 @@ final class TopContentViewModel: ObservableObject {
                 guard let self else { return }
                 reloadMangaData()
             }
-            .store(in: &cancellables)
+            .store(in: &cancelables)
     }
     
     // MARK: - Top Anime
@@ -90,7 +96,7 @@ final class TopContentViewModel: ObservableObject {
                 guard let self else { return }
                 handleTopAnimeResponse(response)
             })
-            .store(in: &cancellables)
+            .store(in: &cancelables)
     }
     
     private func handleTopAnimeResponse(_ response: TopAnimeResponse) {
@@ -147,7 +153,7 @@ final class TopContentViewModel: ObservableObject {
                 
                 handleTopMangaResponse(response)
             })
-            .store(in: &cancellables)
+            .store(in: &cancelables)
     }
     
     private func handleTopMangaResponse(_ response: TopMangaResponse) {
