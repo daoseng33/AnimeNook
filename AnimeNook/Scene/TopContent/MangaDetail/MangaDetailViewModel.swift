@@ -36,14 +36,19 @@ final class MangaDetailViewModel: ObservableObject {
     }
     
     func checkManga() {
-          Task {
-              let existingManga = try? await storage.fetchOne(predicate: #Predicate<TopManga> { item in
-                  item.malId == manga.malId
-              })
-              
-              isFavorite = existingManga != nil
-          }
-      }
+        Task {
+            do {
+                let existingManga = try await storage.fetchOne(predicate: #Predicate<TopManga> { item in
+                    item.malId == manga.malId
+                })
+                
+                isFavorite = existingManga != nil
+            } catch {
+                print("Fetch Error: \(error.localizedDescription)")
+                isFavorite = false
+            }
+        }
+    }
     
     private func setupPublisher() {
         $isFavorite

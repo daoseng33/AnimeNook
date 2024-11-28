@@ -40,11 +40,15 @@ final class AnimeDetailViewModel: ObservableObject {
     
     func checkAnime(anime: TopAnime) {
           Task {
-              let existingAnime = try? await storage.fetchOne(predicate: #Predicate<TopAnime> { item in
-                  item.malId == anime.malId
-              })
-              
-              isFavorite = existingAnime != nil
+              do {
+                  let existingAnime = try await storage.fetchOne(predicate: #Predicate<TopAnime> { item in
+                      item.malId == anime.malId
+                  })
+                  isFavorite = existingAnime != nil
+              } catch {
+                  print("Fetch Error: \(error.localizedDescription)")
+                  isFavorite = false
+              }
           }
       }
     
