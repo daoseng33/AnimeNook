@@ -10,7 +10,7 @@ import Alamofire
 import Moya
 import MoyaHelper
 
-public enum TopAnimeType: String, CaseIterable, Identifiable {
+public enum TopAnimeType: String, CaseIterable, Identifiable, CustomStringConvertible {
     case tv
     case tvSpecial = "tv_special"
     case movie
@@ -23,7 +23,11 @@ public enum TopAnimeType: String, CaseIterable, Identifiable {
     
     public var id: String { rawValue }
     
-    public var displayText: String {
+    var apiValue: String {
+        return self.rawValue
+    }
+    
+    public var description: String {
         switch self {
         case .tv:
             return "TV"
@@ -45,13 +49,9 @@ public enum TopAnimeType: String, CaseIterable, Identifiable {
             return "CM"
         }
     }
-    
-    var apiValue: String {
-        return self.rawValue
-    }
 }
 
-public enum TopAnimeFilter: String, CaseIterable, Identifiable {
+public enum TopAnimeFilter: String, CaseIterable, Identifiable, CustomStringConvertible {
     case byPopularity = "bypopularity"
     case upcoming
     case airing
@@ -59,7 +59,11 @@ public enum TopAnimeFilter: String, CaseIterable, Identifiable {
     
     public var id: String { rawValue }
     
-    public var displayText: String {
+    var apiValue: String {
+        return self.rawValue
+    }
+    
+    public var description: String {
         switch self {
         case .byPopularity:
             return "By Popularity"
@@ -71,13 +75,9 @@ public enum TopAnimeFilter: String, CaseIterable, Identifiable {
             return "Favorite"
         }
     }
-    
-    var apiValue: String {
-        return self.rawValue
-    }
 }
 
-public enum TopAnimeRating: String, CaseIterable, Identifiable {
+public enum TopAnimeRating: String, CaseIterable, Identifiable, CustomStringConvertible {
     case g
     case pg
     case pg13
@@ -87,7 +87,11 @@ public enum TopAnimeRating: String, CaseIterable, Identifiable {
     
     public var id: String { rawValue }
     
-    public var displayText: String {
+    var apiValue: String {
+        return self.rawValue
+    }
+    
+    public var description: String {
         switch self {
         case .g:
             return "G"
@@ -103,13 +107,9 @@ public enum TopAnimeRating: String, CaseIterable, Identifiable {
             return "Rx"
         }
     }
-    
-    var apiValue: String {
-        return self.rawValue
-    }
 }
 
-public enum TopMangaType: String, CaseIterable, Identifiable {
+public enum TopMangaType: String, CaseIterable, Identifiable, CustomStringConvertible {
     case manga
     case novel
     case lightnovel
@@ -120,7 +120,11 @@ public enum TopMangaType: String, CaseIterable, Identifiable {
     
     public var id: String { rawValue }
     
-    public var displayText: String {
+    var apiValue: String {
+        return self.rawValue
+    }
+    
+    public var description: String {
         switch self {
         case .manga:
             return "Manga"
@@ -138,14 +142,10 @@ public enum TopMangaType: String, CaseIterable, Identifiable {
             return "Manhua"
         }
     }
-    
-    var apiValue: String {
-        return self.rawValue
-    }
 }
 
 
-public enum TopMangaFilter: String, CaseIterable, Identifiable {
+public enum TopMangaFilter: String, CaseIterable, Identifiable, CustomStringConvertible {
     case publishing
     case upcoming
     case byPopularity = "bypopularity"
@@ -153,7 +153,11 @@ public enum TopMangaFilter: String, CaseIterable, Identifiable {
     
     public var id: String { rawValue }
     
-    public var displayText: String {
+    var apiValue: String {
+        return self.rawValue
+    }
+    
+    public var description: String {
         switch self {
         case .publishing:
             return "Publishing"
@@ -164,10 +168,6 @@ public enum TopMangaFilter: String, CaseIterable, Identifiable {
         case .favorite:
             return "Favorite"
         }
-    }
-    
-    var apiValue: String {
-        return self.rawValue
     }
 }
 

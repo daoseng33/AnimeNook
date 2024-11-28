@@ -61,6 +61,23 @@ struct TopContentView: View {
         }
     }
     
+    private struct FilterPickerView<T: CaseIterable & Identifiable & Hashable & CustomStringConvertible>: View {
+        let title: String
+        @Binding var selection: T
+        let scaleEffect: CGFloat
+        
+        var body: some View {
+            Picker(title, selection: $selection) {
+                ForEach(Array(T.allCases) as! [T], id: \.self) { type in
+                    Text(type.description)
+                        .tag(type)
+                }
+            }
+            .pickerStyle(.menu)
+            .scaleEffect(scaleEffect)
+        }
+    }
+    
     private var pickerSection: some View {
         Picker("TopContentPicker", selection: $viewModel.selectedSegment) {
             ForEach(NavigationSegment.allCases, id: \.self) { type in
@@ -73,32 +90,15 @@ struct TopContentView: View {
     // MARK: - Anime
     private var animeFilterSection: some View {
         HStack {
-            Picker("Type", selection: $viewModel.animeSelectedType) {
-                ForEach(TopAnimeType.allCases, id: \.self) { type in
-                    Text(type.displayText)
-                        .tag(type)
-                }
-            }
-            .pickerStyle(.menu)
-            .scaleEffect(scaleEffect)
-            
-            Picker("Filter", selection: $viewModel.animeSelectedFilter) {
-                ForEach(TopAnimeFilter.allCases, id: \.self) { type in
-                    Text(type.displayText)
-                        .tag(type)
-                }
-            }
-            .pickerStyle(.menu)
-            .scaleEffect(scaleEffect)
-            
-            Picker("Rating", selection: $viewModel.animeSelectedRating) {
-                ForEach(TopAnimeRating.allCases, id: \.self) { type in
-                    Text(type.displayText)
-                        .tag(type)
-                }
-            }
-            .pickerStyle(.menu)
-            .scaleEffect(scaleEffect)
+            FilterPickerView(title: "Type",
+                             selection: $viewModel.animeSelectedType,
+                             scaleEffect: scaleEffect)
+            FilterPickerView(title: "Filter",
+                             selection: $viewModel.animeSelectedFilter,
+                             scaleEffect: scaleEffect)
+            FilterPickerView(title: "Rating",
+                             selection: $viewModel.animeSelectedRating,
+                             scaleEffect: scaleEffect)
         }
     }
     
@@ -128,23 +128,12 @@ struct TopContentView: View {
     // MARK: - Manga
     private var mangaFilterSection: some View {
         HStack {
-            Picker("Type", selection: $viewModel.mangaSelectedType) {
-                ForEach(TopMangaType.allCases, id: \.self) { type in
-                    Text(type.displayText)
-                        .tag(type)
-                }
-            }
-            .pickerStyle(.menu)
-            .scaleEffect(scaleEffect)
-            
-            Picker("Filter", selection: $viewModel.mangaSelectedFilter) {
-                ForEach(TopMangaFilter.allCases, id: \.self) { type in
-                    Text(type.displayText)
-                        .tag(type)
-                }
-            }
-            .pickerStyle(.menu)
-            .scaleEffect(scaleEffect)
+            FilterPickerView(title: "Type",
+                             selection: $viewModel.mangaSelectedType,
+                             scaleEffect: scaleEffect)
+            FilterPickerView(title: "Filter",
+                             selection: $viewModel.mangaSelectedFilter,
+                             scaleEffect: scaleEffect)
         }
     }
     
@@ -173,7 +162,10 @@ struct TopContentView: View {
 }
 
 //#Preview {
+//    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+//    let container = try! ModelContainer(for: TopAnime.self, TopManga.self, configurations: config)
+//    
 //    let apiService = TopAPIService()
-//    let viewModel = TopContentViewModel(apiService: apiService, modelContext: <#ModelContext#>)
-//    TopContentView(viewModel: viewModel)
+//    let viewModel = TopContentViewModel(apiService: apiService, modelContext: container.mainContext)
+//    return TopContentView(viewModel: viewModel)
 //}
