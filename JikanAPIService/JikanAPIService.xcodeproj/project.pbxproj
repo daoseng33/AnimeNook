@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C0735982CF0701700E1392D /* AnimeData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0735972CF0701700E1392D /* AnimeData.framework */; };
-		1C0735992CF0701700E1392D /* AnimeData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0735972CF0701700E1392D /* AnimeData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1C1630342CF850300040AAFD /* AnimeData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0735972CF0701700E1392D /* AnimeData.framework */; };
 		1C7BC0882CD9BCA700041967 /* JikanAPIService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7BC07D2CD9BCA700041967 /* JikanAPIService.framework */; };
 		1C7BC09A2CD9BE7300041967 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 1C7BC0992CD9BE7300041967 /* CombineMoya */; };
 		1C7BC09C2CD9BE7300041967 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 1C7BC09B2CD9BE7300041967 /* Moya */; };
@@ -24,20 +23,6 @@
 			remoteInfo = JikanAPIService;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		1C07359A2CF0701700E1392D /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				1C0735992CF0701700E1392D /* AnimeData.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1C0735972CF0701700E1392D /* AnimeData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AnimeData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,7 +64,7 @@
 				1C7BC0AF2CD9E33400041967 /* MoyaHelper in Frameworks */,
 				1C7BC09C2CD9BE7300041967 /* Moya in Frameworks */,
 				1C7BC09A2CD9BE7300041967 /* CombineMoya in Frameworks */,
-				1C0735982CF0701700E1392D /* AnimeData.framework in Frameworks */,
+				1C1630342CF850300040AAFD /* AnimeData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,7 +127,6 @@
 				1C7BC0792CD9BCA700041967 /* Sources */,
 				1C7BC07A2CD9BCA700041967 /* Frameworks */,
 				1C7BC07B2CD9BCA700041967 /* Resources */,
-				1C07359A2CF0701700E1392D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
