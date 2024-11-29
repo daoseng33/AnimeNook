@@ -3,8 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 70;
 	objects = {
+
+/* Begin PBXBuildFile section */
+		1C00C26D2CF41E3100B3527D /* AnimeData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C00C26C2CF41E3100B3527D /* AnimeData.framework */; };
+		1C00C26E2CF41E3100B3527D /* AnimeData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C00C26C2CF41E3100B3527D /* AnimeData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1C7BC0C42CDA227C00041967 /* JikanAPIService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7BC0C32CDA227C00041967 /* JikanAPIService.framework */; };
+		1C7BC0C52CDA227C00041967 /* JikanAPIService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7BC0C32CDA227C00041967 /* JikanAPIService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1C7BC13E2CEAE8CD00041967 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1C7BC13D2CEAE8CD00041967 /* Kingfisher */; };
+		1C7BC2252CEDBD9700041967 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 1C7BC2242CEDBD9700041967 /* SFSafeSymbols */; };
+/* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		1C5A54CF2CD8BC5F004AB1F0 /* PBXContainerItemProxy */ = {
@@ -23,28 +32,33 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1C7BC0C62CDA227C00041967 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1C7BC0C52CDA227C00041967 /* JikanAPIService.framework in Embed Frameworks */,
+				1C00C26E2CF41E3100B3527D /* AnimeData.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1C00C26C2CF41E3100B3527D /* AnimeData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AnimeData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C5A54BD2CD8BC5E004AB1F0 /* AnimeNook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimeNook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C5A54CE2CD8BC5F004AB1F0 /* AnimeNookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimeNookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C5A54D82CD8BC5F004AB1F0 /* AnimeNookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimeNookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C7BC0C32CDA227C00041967 /* JikanAPIService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = JikanAPIService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		1C5A54BF2CD8BC5E004AB1F0 /* AnimeNook */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = AnimeNook;
-			sourceTree = "<group>";
-		};
-		1C5A54D12CD8BC5F004AB1F0 /* AnimeNookTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = AnimeNookTests;
-			sourceTree = "<group>";
-		};
-		1C5A54DB2CD8BC5F004AB1F0 /* AnimeNookUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = AnimeNookUITests;
-			sourceTree = "<group>";
-		};
+		1C5A54BF2CD8BC5E004AB1F0 /* AnimeNook */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AnimeNook; sourceTree = "<group>"; };
+		1C5A54D12CD8BC5F004AB1F0 /* AnimeNookTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AnimeNookTests; sourceTree = "<group>"; };
+		1C5A54DB2CD8BC5F004AB1F0 /* AnimeNookUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AnimeNookUITests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +66,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C7BC2252CEDBD9700041967 /* SFSafeSymbols in Frameworks */,
+				1C7BC13E2CEAE8CD00041967 /* Kingfisher in Frameworks */,
+				1C7BC0C42CDA227C00041967 /* JikanAPIService.framework in Frameworks */,
+				1C00C26D2CF41E3100B3527D /* AnimeData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +96,7 @@
 				1C5A54BF2CD8BC5E004AB1F0 /* AnimeNook */,
 				1C5A54D12CD8BC5F004AB1F0 /* AnimeNookTests */,
 				1C5A54DB2CD8BC5F004AB1F0 /* AnimeNookUITests */,
+				1C7BC0C22CDA227C00041967 /* Frameworks */,
 				1C5A54BE2CD8BC5E004AB1F0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,6 +111,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1C7BC0C22CDA227C00041967 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C00C26C2CF41E3100B3527D /* AnimeData.framework */,
+				1C7BC0C32CDA227C00041967 /* JikanAPIService.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -102,6 +130,7 @@
 				1C5A54B92CD8BC5E004AB1F0 /* Sources */,
 				1C5A54BA2CD8BC5E004AB1F0 /* Frameworks */,
 				1C5A54BB2CD8BC5E004AB1F0 /* Resources */,
+				1C7BC0C62CDA227C00041967 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -112,6 +141,8 @@
 			);
 			name = AnimeNook;
 			packageProductDependencies = (
+				1C7BC13D2CEAE8CD00041967 /* Kingfisher */,
+				1C7BC2242CEDBD9700041967 /* SFSafeSymbols */,
 			);
 			productName = AnimeNook;
 			productReference = 1C5A54BD2CD8BC5E004AB1F0 /* AnimeNook.app */;
@@ -187,6 +218,7 @@
 				};
 			};
 			buildConfigurationList = 1C5A54B82CD8BC5E004AB1F0 /* Build configuration list for PBXProject "AnimeNook" */;
+			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -195,7 +227,10 @@
 			);
 			mainGroup = 1C5A54B42CD8BC5E004AB1F0;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
+			packageReferences = (
+				1C7BC1032CEAE83200041967 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				1C7BC2232CEDBD9700041967 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+			);
 			productRefGroup = 1C5A54BE2CD8BC5E004AB1F0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -274,6 +309,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -321,7 +357,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -329,6 +365,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
@@ -337,6 +374,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -378,12 +416,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};
@@ -413,13 +452,12 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.likeabossapp.AnimeNook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Debug;
@@ -450,13 +488,12 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.likeabossapp.AnimeNook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Release;
@@ -475,7 +512,6 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnimeNook.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AnimeNook";
 			};
@@ -495,7 +531,6 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnimeNook.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AnimeNook";
 			};
@@ -514,7 +549,6 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_TARGET_NAME = AnimeNook;
 			};
@@ -533,7 +567,6 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_TARGET_NAME = AnimeNook;
 			};
@@ -579,6 +612,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1C7BC1032CEAE83200041967 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.0;
+			};
+		};
+		1C7BC2232CEDBD9700041967 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SFSafeSymbols/SFSafeSymbols";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1C7BC13D2CEAE8CD00041967 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C7BC1032CEAE83200041967 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		1C7BC2242CEDBD9700041967 /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C7BC2232CEDBD9700041967 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1C5A54B52CD8BC5E004AB1F0 /* Project object */;
 }
